@@ -8,6 +8,12 @@ export default {
       extend: {
         height: {
           'h-68': '270px',
+        },
+        color: {
+          'crech-blue': '#4318FF',
+        },
+        backgroundColor: {
+          'crech-blue': '#4318FF',
         }
       }
   },
