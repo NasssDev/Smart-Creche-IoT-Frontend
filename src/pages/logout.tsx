@@ -1,9 +1,9 @@
-import {LabelPage} from "../components/LabelPage.tsx";
+import { LabelPage } from "../components/LabelPage.tsx";
 
 export const Logout = () => {
     return (
         <>
-            <LabelPage label={"Logout"}/>
+            <LabelPage label={"Logout"} />
         </>
     )
 }
