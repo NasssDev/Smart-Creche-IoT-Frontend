@@ -16,8 +16,13 @@ function App() {
 
     return <>
         <div className="flex">
+<<<<<<< HEAD
             <SideBar />
             <div className="flex-1 max-w-full" >
+=======
+            <SideBar/>
+            <div className="flex-1 max-w-full overflow-hidden ml-64 px-10" >
+>>>>>>> 7c7088118d93008160058c64fcd1388e464c59a5
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
