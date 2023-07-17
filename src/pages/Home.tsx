@@ -4,8 +4,8 @@ import {InteractivePlan} from "../components/InteractivePlan.tsx";
 export const Home = () => {
     return (
         <>
-            <div id="main" className="grid h-screen">
-                <LabelPage label={"Home"} />
+            <LabelPage label={"Home"} />
+            <div id="main" className="grid h-screen mt-10">
                 <InteractivePlan />
             </div>
         </>

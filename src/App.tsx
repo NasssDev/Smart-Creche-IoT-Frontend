@@ -14,7 +14,7 @@ function App() {
     return <>
         <div className="flex">
             <SideBar/>
-            <div className="flex-1 max-w-full" >
+            <div className="flex-1 max-w-full overflow-hidden ml-64 px-10" >
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/dashboard" element={<Dashboard/>}/>

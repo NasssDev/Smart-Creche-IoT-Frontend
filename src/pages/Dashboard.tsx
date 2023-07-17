@@ -5,10 +5,10 @@ export const Dashboard = () => {
     return (
         <div>
             <LabelPage label={"Dashboard"}/>
-            <div className="flex flex-row">
+            <div id="main" className="grid grid-cols-3 mt-10 ">
                 {
-                    [1, 2, 3].map(() => (
-                        <SensorCard/>
+                    ["CO2", "Humidity", "Temperature", "Humidity", "Temperature"].map((elem) => (
+                        <SensorCard label={elem} />
                     ))
                 }
             </div>

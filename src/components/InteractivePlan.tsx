@@ -1,12 +1,13 @@
 import {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
+import {EChartsOption} from "echarts";
 
 export const InteractivePlan = () => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
-        let option = {};
+        let option:EChartsOption = {};
 
         option = {
 
@@ -58,6 +59,6 @@ export const InteractivePlan = () => {
         };
     }, []);
 
-    return <div ref={chartRef} className="w-5/6 h-96 shadow pb-2 border-black rounded-2xl mx-auto"></div>;
+    return <div ref={chartRef} className="w-full h-96 shadow pb-2 border-black rounded-2xl mx-auto"></div>;
 };
 
