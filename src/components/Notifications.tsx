@@ -8,58 +8,59 @@ const SwitchComponent = () => {
     };
 
     return (
-        <div>
-        <Card style={{width: 400, borderRadius: 30 }}>
-            <h2 style={{ fontSize: '30px' }}>Notifications</h2>
-            <br/>
-            <div>
-                <Switch
-                    defaultChecked={true}
-                    onChange={(checked) => handleSwitchChange(checked, 'Text 1')}
-                />
-                <span style={{ fontSize: '20px' }}>Movement Detection</span>
-            </div>
-            <br/>
-            <div>
-                <Switch
-                    defaultChecked={false}
-                    onChange={(checked) => handleSwitchChange(checked, 'Text 2')}
-                />
-                <span style={{ fontSize: '20px' }}>Temperature Alert</span>
-            </div>
-            <br/>
-            <div>
-                <Switch
-                    defaultChecked={true}
-                    onChange={(checked) => handleSwitchChange(checked, 'Text 3')}
-                />
-                <span style={{ fontSize: '20px' }}>CO2 Alert</span>
-            </div>
-            <br/>
-            <div>
-                <Switch
-                    defaultChecked={false}
-                    onChange={(checked) => handleSwitchChange(checked, 'Text 4')}
-                />
-                <span style={{ fontSize: '20px' }}>Humidity Alert</span>
-            </div>
-            <br/>
-            <div>
-                <Switch
-                    defaultChecked={false}
-                    onChange={(checked) => handleSwitchChange(checked, 'Text 5')}
-                />
-                <span style={{ fontSize: '20px' }}>High Noise Alert</span>
-            </div>
-            <br/>
-            <div>
-                <Switch
-                    defaultChecked={true}
-                    onChange={(checked) => handleSwitchChange(checked, 'Text 6')}
-                />
-                <span style={{ fontSize: '20px' }}>Water Leak Alert</span>
-            </div>
-        </Card></div>
+        <div className='w-full max-w-xs'>
+            <Card className="w-400 rounded-3xl shadow-lg">
+                <h2 className="text-3xl">Notifications</h2>
+                <br />
+                <div className="flex items-center">
+                    <Switch
+                        defaultChecked={true}
+                        onChange={(checked) => handleSwitchChange(checked, 'Text 1')}
+                    />
+                    <span className="text-2xl">Movement Detection</span>
+                </div>
+                <br />
+                <div className="flex items-center">
+                    <Switch
+                        defaultChecked={false}
+                        onChange={(checked) => handleSwitchChange(checked, 'Text 2')}
+                    />
+                    <span className="text-2xl">Temperature Alert</span>
+                </div>
+                <br />
+                <div className="flex items-center">
+                    <Switch
+                        defaultChecked={true}
+                        onChange={(checked) => handleSwitchChange(checked, 'Text 3')}
+                    />
+                    <span className="text-2xl">CO2 Alert</span>
+                </div>
+                <br />
+                <div className="flex items-center">
+                    <Switch
+                        defaultChecked={false}
+                        onChange={(checked) => handleSwitchChange(checked, 'Text 4')}
+                    />
+                    <span className="text-2xl">Humidity Alert</span>
+                </div>
+                <br />
+                <div className="flex items-center">
+                    <Switch
+                        defaultChecked={false}
+                        onChange={(checked) => handleSwitchChange(checked, 'Text 5')}
+                    />
+                    <span className="text-2xl">High Noise Alert</span>
+                </div>
+                <br />
+                <div className="flex items-center">
+                    <Switch
+                        defaultChecked={true}
+                        onChange={(checked) => handleSwitchChange(checked, 'Text 6')}
+                    />
+                    <span className="text-2xl">Water Leak Alert</span>
+                </div>
+            </Card>
+        </div>
     );
 };
 
