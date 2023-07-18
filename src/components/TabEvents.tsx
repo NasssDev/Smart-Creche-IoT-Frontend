@@ -1,27 +1,16 @@
 export const TabEvents = () => {
     return (
         <section className="container px-4 mx-auto">
-            <div className="sm:flex sm:justify-between">
-            <input type="date" />
-
-    <select>   
-        <option value="#">Sensors</option>
-        <option value="#">Motion</option>
-        <option value="#">Temperature</option>  
-        <option value="#">Humidity</option>
-        <option value="#">CO2</option>
-        <option value="#">Sound</option>
-    </select>
-
-        <div className="flex items-center mt-4 gap-x-3">
-            <button className="w-1/2 px-5 py-2 text-sm text-gray-800 transition-colors duration-200 bg-white border rounded-lg sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-white dark:border-gray-700">
-                Events
-            </button>
-
-            <button className="w-1/2 px-5 py-2 text-sm text-gray-800 transition-colors duration-200 bg-white border rounded-lg sm:w-auto dark:hover:bg-gray-800 dark:bg-gray-900 hover:bg-gray-100 dark:text-white dark:border-gray-700">
-                Sensors
-            </button>
-        </div>
+    <div className="sm:flex sm:justify-between">
+        <select>   
+            <option value="#">Motion</option>
+            <option value="#">Temperature</option>  
+            <option value="#">Humidity</option>
+            <option value="#">CO2</option>
+            <option value="#">Sound</option>
+            <option value="#">Sensors</option>
+        </select>
+        <input type="date" />
     </div>
 
     <div className="flex flex-col mt-6">    
