@@ -13,7 +13,7 @@ const GeneralInformations = () => {
                             </label>
                             <input
                                 className="appearance-none block w-full bg-blue-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
-                                id="grid-password"
+                                id="grid-email"
                                 type="email"
                                 placeholder="username@example.com"
                             />
