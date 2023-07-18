@@ -6,7 +6,7 @@ export const SensorCard = ({label}: {label:string}) => {
                 <div className="text-left block text-xl font-bold text-gray-800">
                     {label}
                 </div>
-            {label === 'Brightness'? <Brightness/> :<Gauge />}
+            {label === 'Humidity'? <Brightness/> :<Gauge />}
         </div>
     )
 }

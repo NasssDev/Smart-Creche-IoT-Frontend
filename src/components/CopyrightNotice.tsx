@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CopyrightNotice: React.FC = () => {
     return (
         <footer style={{ fontSize: '14px', color: 'gray' }}>

@@ -1,12 +1,6 @@
-import React from 'react';
 import { Card } from 'antd';
 
 const GeneralInformations = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Handle form submission logic here
-    };
-
     return (
             <Card className="w-400 rounded-3xl shadow-lg">
                 <h2 className="text-3xl">General Information</h2>

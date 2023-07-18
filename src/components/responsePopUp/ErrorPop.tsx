@@ -1,5 +1,5 @@
 export const ErrorPop = ({message}:{message: string}) => {
-    return (<div className="flex w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
+    return (<div className="flex w-full max-w-sm overflow-hidden bg-white rounded-lg shadow-md ">
         <div className="flex items-center justify-center w-12 bg-red-500">
             <svg className="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -9,8 +9,8 @@ export const ErrorPop = ({message}:{message: string}) => {
 
         <div className="px-4 py-2 -mx-3">
             <div className="mx-3">
-                <span className="font-semibold text-red-500 dark:text-red-400">Error</span>
-                <p className="text-sm text-gray-600 dark:text-gray-200">
+                <span className="font-semibold text-red-500">Error</span>
+                <p className="text-sm text-gray-600">
                     {message}
                 </p>
             </div>

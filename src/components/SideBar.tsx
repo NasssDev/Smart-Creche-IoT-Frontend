@@ -19,7 +19,7 @@ export const SideBar = () => {
         <aside
             className="flex flex-col w-64 h-screen max-h-full py-8 overflow-y-auto border-r rtl:border-r-0 rtl:border-l bg-purple-50 fixed">
             <Link to="/" onClick={() => setActivLink("/")}>
-                <img className="mx-auto h-15" src="/public/smartcrech.svg" alt=""></img>
+                <img className="mx-auto h-15" src="/smartcrech.svg" alt="logo avec écrit smart crech"></img>
             </Link>
             <div className="flex flex-col justify-between flex-1 mt-6">
                 <nav className="ml-3 space-y-3 ">

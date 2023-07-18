@@ -9,7 +9,7 @@ export default {
         height: {
           'h-68': '270px',
         },
-        color: {
+        colors: {
           'crech-blue': '#4318FF',
         },
         backgroundColor: {
