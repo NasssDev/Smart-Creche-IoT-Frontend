@@ -1,11 +1,6 @@
-import React from 'react';
 import {Card} from "antd";
 
 const GeneralInformations = () => {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Handle form submission logic here
-    };
 
     return (
         <div style={{width: 400 }}>
