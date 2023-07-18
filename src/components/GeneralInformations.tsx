@@ -8,9 +8,9 @@ const GeneralInformations = () => {
     };
 
     return (
-        <div className="w-400">
-            <Card className="w-500 rounded-30">
+            <Card className="w-400 rounded-3xl shadow-lg">
                 <h2 className="text-3xl">General Information</h2>
+
                 <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
                     <div className="-mx-3 md:flex mb-6">
                         <div className="md:w-full px-3">
@@ -18,22 +18,22 @@ const GeneralInformations = () => {
                                 Email
                             </label>
                             <input
-                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
+                                className="appearance-none block w-full bg-blue-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
                                 id="grid-password"
-                                type="password"
+                                type="email"
                                 placeholder="username@example.com"
                             />
                         </div>
                     </div>
 
                     <div className="-mx-3 md:flex mb-6">
-                        <div className="md:w-1/2 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-black-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
+                        <div className="md:w-1/2 px-3">
+                            <label className="block uppercase tracking-wide text-black-700 text-xs font-bold mb-2" htmlFor="grid-first-name" >
                                 First Name
                             </label>
                             <input
-                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3"
-                                id="grid-first-name"
+                                className="appearance-none block w-full bg-blue-200 text-gray-700 border border-gray-200 rounded py-3 px-4"
+                                id="grid-last-name"
                                 type="text"
                                 placeholder="Adela"
                             />
@@ -43,7 +43,7 @@ const GeneralInformations = () => {
                                 Last Name
                             </label>
                             <input
-                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4"
+                                className="appearance-none block w-full bg-blue-200 text-gray-700 border border-gray-200 rounded py-3 px-4"
                                 id="grid-last-name"
                                 type="text"
                                 placeholder="Parkson"
@@ -56,9 +56,9 @@ const GeneralInformations = () => {
                                 Position held
                             </label>
                             <input
-                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
+                                className="appearance-none block w-full bg-blue-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
                                 id="grid-positionheld"
-                                type="password"
+                                type="text"
                                 placeholder="Directrice"
                             />
                         </div>
@@ -69,9 +69,9 @@ const GeneralInformations = () => {
                                 Siret the collective crech
                             </label>
                             <input
-                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
+                                className="appearance-none block w-full bg-blue-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
                                 id="grid-collectivecrech"
-                                type="password"
+                                type="number"
                                 placeholder="49336137200011"
                             />
                         </div>
@@ -79,19 +79,18 @@ const GeneralInformations = () => {
                     <div className="-mx-3 md:flex mb-6">
                         <div className="md:w-full px-3">
                             <label className="block uppercase tracking-wide text-black-700 text-xs font-bold mb-2" htmlFor="grid-password">
-                                Siret the collective crech
+                                Password
                             </label>
                             <input
-                                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
+                                className="appearance-none block w-full bg-blue-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3"
                                 id="grid-password"
                                 type="password"
-                                placeholder="49336137200011"
+                                placeholder="***************"
                             />
                         </div>
                     </div>
                 </div>
             </Card>
-        </div>
     );
 };
 
