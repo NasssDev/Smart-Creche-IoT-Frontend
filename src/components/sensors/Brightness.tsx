@@ -8,38 +8,29 @@ export const Brightness = () => {
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
 
         const option = {
-
+            tooltip: {
+                trigger: 'item',
+                formatter: '{b}: {c}%'
+            },
             series: [
                 {
-                    tooltip: {
-                        trigger: 'item'
-                    },
                     name: 'Access From',
                     type: 'pie',
                     radius: ['40%', '70%'],
                     center: ['50%', '45%'],
-                    // adjust the start angle
-                    startAngle: 200,
+                    startAngle: 196,
                     label: {
-                        show:true,
-                        content:'nass',
-                        center: ['50%','40%']
+                        show: false,
+                        formatter(params:any) {
+                            return params.name === 'hidden' ? '' : params.name + ' (' + params.value + '%)';
+                        },
                     },
                     data: [
+                        { value: 80, name: 'Brightness', itemStyle: {color:'lightblue'} },
+                        { value: 20, name: 'Darkness', itemStyle: {color:'orange'}},
                         {
-                            label: {show:false},
-                            value: 260,
-                            name: 'no Engine',
-                            itemStyle: { color: 'lightblue' }
-                        },
-                        {
-                            label: {show:false},
-                            value: 60,
-                            name: 'Search Engine',
-                            itemStyle: { color: 'orange' }
-                        },
-                        {
-                            value: 200,
+                            value: 70,
+                            name:'brightness',
                             itemStyle: {
                                 color: 'none',
                                 decal: {
@@ -52,8 +43,34 @@ export const Brightness = () => {
                         }
                     ]
                 }
-            ]
+            ],
+            graphic: [
+                {
+                    type: 'text',
+                    left: 'center',
+                    top: '75%',
+                    style: {
+                        text: 'The light capacity is at '+90+'%',
+                        textAlign: 'center',
+                        fill: 'grey',
+                    },
+                },
+                {
+                    type: 'text',
+                    left: 'center',
+                    top: '60%',
+                    style: {
+                        text: 90+'%',
+                        textAlign: 'center',
+                        fill: 'black',
+                        font: 'bolder 1.5em sans-serif'
+                    },
+                },
+            ],
         };
+
+
+
 
         myChart.setOption(option);
 

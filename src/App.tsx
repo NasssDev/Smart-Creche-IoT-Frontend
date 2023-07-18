@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 
 import { Home } from "./pages/Home";
@@ -12,13 +12,12 @@ import { SignUp } from "./pages/SignUp.tsx";
 import { SignUp2 } from "./pages/SignUp2.tsx";
 
 function App() {
-    // const [count, setCount] = useState(0)
+    const [count] = useState(1)
 
     return <>
         <div className="flex">
-
-            <SideBar/>
-            <div className="flex-1 max-w-full overflow-hidden ml-64 px-10" >
+            {count === 1 && <SideBar/>}
+            <div className={count === 1 ? "flex-1 max-w-full overflow-hidden ml-64 px-10" : "flex-1 max-w-full overflow-hidden mx-auto px-10"} >
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
