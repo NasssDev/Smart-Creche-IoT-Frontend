@@ -1,5 +1,5 @@
 import {LabelPage} from "../components/LabelPage.tsx";
-import {SensorCard} from "../components/SensorCard.tsx";
+import {SensorCard} from "../components/sensors/SensorCard.tsx";
 
 export const Dashboard = () => {
     return (
