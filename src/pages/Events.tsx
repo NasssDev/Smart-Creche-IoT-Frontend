@@ -5,8 +5,8 @@ export const Events = () => {
     return (
         <>
             <LabelPage label={"Events"} />
-            <div className="bg-crech-blue w-40 h-40">
-                {/*<DegreeBar/>*/}
+            <div className="flex justify-center items-center h-screen">
+                {/*<DegreeBar temperature={55} />*/}
             </div>
         </>
     )
