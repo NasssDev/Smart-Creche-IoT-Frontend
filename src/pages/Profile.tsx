@@ -1,7 +1,5 @@
-import React from 'react';
 import { LabelPage } from '../components/LabelPage.tsx';
 import ProfileCard from '../components/ProfileCard';
-import CopyrightNotice from '../components/CopyrightNotice';
 import Notifications from '../components/Notifications';
 import GeneralInformations from '../components/GeneralInformations';
 
