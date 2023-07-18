@@ -16,8 +16,7 @@ function App() {
 
     return <>
         <div className="flex">
-
-            <SideBar/>
+            <SideBar />
             <div className="flex-1 max-w-full overflow-hidden ml-64 px-10" >
                 <Routes>
                     <Route path="/" element={<Home />} />

@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Card } from 'antd';
 
 const SwitchComponent = () => {
-    const handleSwitchChange = (checked, text) => {
+    const handleSwitchChange = (checked: boolean, text: String) => {
         console.log(`Switch for ${text} is ${checked}`);
         // Perform any other actions based on the switch change
     };
