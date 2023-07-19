@@ -3,7 +3,7 @@ import {useEffect, useRef} from "react";
 
 type EChartsOption = echarts.EChartsOption;
 
-export const Gauge = () => {
+export const Gauge = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string|null}) => {
     const chartRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
@@ -92,5 +92,5 @@ export const Gauge = () => {
         };
     }, []);
 
-    return <div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div>;
+    return <div><span className="absolute">{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
 }

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-export const Brightness = () => {
+export const Brightness = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string|null}) => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -79,5 +79,6 @@ export const Brightness = () => {
         };
     }, []);
 
-    return <div ref={chartRef} className="h-64"></div>;
+    return <div><span className="absolute">{labelForSiesteTabOnly}</span><div ref={chartRef} className="h-64"></div></div>;
+
 };
