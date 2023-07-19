@@ -5,10 +5,10 @@ export const Dashboard = () => {
     return (
         <div>
             <LabelPage label={"Dashboard"}/>
-            <div id="main" className="grid grid-cols-3 mt-10 ">
+            <div id="main" className="grid gap-10 grid-cols-3 mt-10">
                 {
-                    ["CO2", "Humidity", "Temperature", "Humidity", "Brightness"].map((elem) => (
-                        <SensorCard label={elem} />
+                    ["CO2", "Humidity", "Temperature", "Water Leak Detection", "Brightness"].map((elem,index) => (
+                        <SensorCard key={index} label={elem} />
                     ))
                 }
             </div>

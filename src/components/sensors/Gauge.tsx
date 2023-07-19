@@ -76,7 +76,7 @@ export const Gauge = () => {
                     }
                 ]
             });
-        }, 2000);
+        }, 20000);
 
         option && myChart.setOption(option);
 
