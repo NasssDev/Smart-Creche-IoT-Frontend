@@ -24,36 +24,36 @@ export const WaterLeak = () => {
                 <tbody
                     className="bg-white divide-y divide-gray-200 ">
                 <tr>
-                    <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    <td className="px-4 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
                         Living Room
                     </td>
-                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    <td className="px-12 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
                         <div>
                             23 Jun 2023<br/>
                             <span className="text-gray-500 font-medium">23:14</span>
                         </div>
                     </td>
-                    <td className="px-4 py-4 text-sm whitespace-nowrap">
+                    <td className="px-4 py-2 text-sm whitespace-nowrap">
                         <div
-                            className="w-3/5 inline-flex items-center px-3 py-1 rounded-lg gap-x-2 bg-emerald-100/60 ">
+                            className="w-full inline-flex items-center px-3 py-1 rounded-lg gap-x-2 bg-emerald-100/60 ">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                             <h2 className="text-sm font-normal text-emerald-500">Processed</h2>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    <td className="px-4 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
                         Office
                     </td>
-                    <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    <td className="px-12 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
                         <div>
                             16 May 2023<br/>
                             <span className="text-gray-500 font-medium">12:28</span>
                         </div>
                     </td>
-                    <td className="px-4 py-4 text-sm whitespace-nowrap">
+                    <td className="px-4 py-2 text-sm whitespace-nowrap">
                         <div
-                            className="w-3/5 inline-flex items-center px-3 py-1 rounded-lg gap-x-2 bg-amber-100/60 ">
+                            className="w-full inline-flex items-center px-3 py-1 rounded-lg gap-x-2 bg-amber-100/60 ">
                             <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
                             <h2 className="text-sm font-normal text-amber-500">Pending</h2>
                         </div>

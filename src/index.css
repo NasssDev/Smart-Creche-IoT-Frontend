@@ -18,3 +18,242 @@
 .link-side-bar {
     @apply flex items-center px-3 py-2 text-gray-400 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700;
 }
+
+
+
+
+/*              TOGGLE-SWITCH             */
+/*.toggle {*/
+/*    height: 50px;*/
+/*    width: 100px;*/
+/*    border-radius: 25px;*/
+/*    margin-left: auto;*/
+/*    background-image: linear-gradient(aqua, skyblue);*/
+/*    position: relative;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.toggle.night {*/
+/*    background-image: linear-gradient(midnightblue, rebeccapurple);*/
+/*}*/
+
+/*.notch {*/
+/*    height: 45px;*/
+/*    width: 45px;*/
+/*    border-radius: 50%;*/
+/*    background: yellow;*/
+/*    position: absolute;*/
+/*    top: 2.5px;*/
+/*    left: 2.5px;*/
+/*    box-shadow: 0 0 2.5px yellow;*/
+/*    z-index: 1;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+/*.notch > .crater {*/
+/*    background: burlywood;*/
+/*    border-radius: 50%;*/
+/*    position: absolute;*/
+/*    opacity: 0;*/
+/*    box-shadow: 0 2.5px 2.5px rgba(0, 0, 0, 0.2) inset;*/
+/*}*/
+
+/*.night .crater {*/
+/*    opacity: 0.2;*/
+/*}*/
+
+/*.crater:first-child {*/
+/*    left: 2.5px;*/
+/*    top: 7.5px;*/
+/*    height: 7.5px;*/
+/*    width: 20px;*/
+/*    transform: rotate(-45deg);*/
+/*}*/
+
+/*.crater:last-child {*/
+/*    right: 5px;*/
+/*    top: 7.5px;*/
+/*    height: 7.5px;*/
+/*    width: 12.5px;*/
+/*    transform: rotate(45deg);*/
+/*}*/
+
+/*.night > .notch {*/
+/*    background: whitesmoke;*/
+/*    box-shadow: 0 0 2.5px whitesmoke;*/
+/*    transform: translate(50px, 0);*/
+/*}*/
+
+/*.shape {*/
+/*    position: absolute;*/
+/*    background: whitesmoke;*/
+/*    border-radius: 50%;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+
+/*.shape.sm {*/
+/*    height: 5px;*/
+/*    width: 25px;*/
+/*    top: 47%;*/
+/*    left: 56%;*/
+/*}*/
+
+/*.shape.md {*/
+/*    height: 5px;*/
+/*    width: 37.5px;*/
+/*    top: 17.5%;*/
+/*    left: 19.5%;*/
+/*    z-index: 2;*/
+/*}*/
+
+/*.shape.lg {*/
+/*    height: 7.5px;*/
+/*    width: 50px;*/
+/*    bottom: 10px;*/
+/*    left: 17.5%;*/
+/*}*/
+
+/*.night .shape {*/
+/*    background: lightgray;*/
+/*    box-shadow: 0 0 5px 1px violet;*/
+/*}*/
+
+/*.night .shape.sm {*/
+/*    height: 2.5px;*/
+/*    width: 2.5px;*/
+/*    transform: translate(-20px, 0);*/
+/*}*/
+
+/*.night .shape.sm:first-of-type {*/
+/*    transform: translate(-40px, -5px);*/
+/*}*/
+
+/*.night .shape.md {*/
+/*    height: 5px;*/
+/*    width: 5px;*/
+/*    transform: translate(5px, 0);*/
+/*}*/
+
+/*.night .shape.lg {*/
+/*    height: 7.5px;*/
+/*    width: 7.5px;*/
+/*    transform: translate(-5px, 0);*/
+/*}*/
+
+
+.toggle {
+    height: 25px;
+    width: 50px;
+    border-radius: 13px;
+    margin-left: auto;
+    background-image: linear-gradient(aqua, skyblue);
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle.night {
+    background-image: linear-gradient(midnightblue, rebeccapurple);
+}
+
+.notch {
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    background: #fde047;
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    box-shadow: 0 0 3px yellow;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.notch > .crater {
+    background: burlywood;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+.night .crater {
+    opacity: 0.5;
+}
+
+.crater:first-child {
+    left: 2px;
+    top: 4px;
+    height: 4px;
+    width: 10px;
+    transform: rotate(-45deg);
+}
+
+.crater:last-child {
+    right: 4px;
+    top: 4px;
+    height: 4px;
+    width: 7px;
+    transform: rotate(45deg);
+}
+
+.night > .notch {
+    background: whitesmoke;
+    box-shadow: 0 0 3px whitesmoke;
+    transform: translate(23px, 0);
+}
+
+.shape {
+    position: absolute;
+    background: whitesmoke;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.shape.sm {
+    height: 3px;
+    width: 13px;
+    top: 48.5%;
+    left: 55%;
+}
+
+.shape.md {
+    height: 3px;
+    width: 19px;
+    top: 16.75%;
+    left: 23.75%;
+    z-index: 2;
+}
+
+.shape.lg {
+    height: 4px;
+    width: 25px;
+    bottom: 5px;
+    left: 23.75%;
+}
+
+.night .shape {
+    background: white;
+    box-shadow: 0 0 3px 1px violet;
+}
+
+.night .shape.sm {
+    height: 2px;
+    width: 2px;
+    transform: translate(-10px, 0);
+}
+
+.night .shape.sm:first-of-type {
+    transform: translate(-20px, -2.5px);
+}
+
+.night .shape.md {
+    height: 3px;
+    width: 3px;
+    transform: translate(3px, 0);
+}
+
+.night .shape.lg {
+    height: 4px;
+    width: 4px;
+    transform: translate(-3px, 0);
+}

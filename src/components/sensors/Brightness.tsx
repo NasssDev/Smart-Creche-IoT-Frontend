@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-export const Brightness = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string|null}) => {
+export const Brightness = ({labelForSiesteTabOnly, toggled: toggled}:{labelForSiesteTabOnly:string|null, toggled:boolean|null}) => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ export const Brightness = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string
                     name: 'Access From',
                     type: 'pie',
                     radius: ['40%', '70%'],
-                    center: ['50%', '45%'],
+                    center: ['50%', '55%'],
                     startAngle: 196,
                     label: {
                         show: false,
@@ -48,21 +48,21 @@ export const Brightness = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string
                 {
                     type: 'text',
                     left: 'center',
-                    top: '75%',
+                    top: '85%',
                     style: {
-                        text: 'The light capacity is at '+90+'%',
+                        text: 'The Humidity is at '+80+'%',
                         textAlign: 'center',
-                        fill: 'grey',
+                        fill: toggled ? 'grey' : 'grey',
                     },
                 },
                 {
                     type: 'text',
                     left: 'center',
-                    top: '60%',
+                    top: '70%',
                     style: {
-                        text: 90+'%',
+                        text: 80+'%',
                         textAlign: 'center',
-                        fill: 'black',
+                        fill: toggled ? 'grey' : 'grey',
                         font: 'bolder 1.5em sans-serif'
                     },
                 },
@@ -79,6 +79,6 @@ export const Brightness = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string
         };
     }, []);
 
-    return <div><span className="absolute">{labelForSiesteTabOnly}</span><div ref={chartRef} className="h-64"></div></div>;
+    return <div><span className={`absolute ${toggled ? " text-gray-500 " : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="h-64"></div></div>;
 
 };

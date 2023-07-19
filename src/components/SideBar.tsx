@@ -2,31 +2,31 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 export const SideBar = () => {
-    const [activLink, setActivLink] = useState<string>("");
+    const [activeLink, setActiveLink] = useState<string>("");
 
     useEffect(() => {
-        const storedActivLink = localStorage.getItem("activLink");
+        const storedActivLink = localStorage.getItem("activeLink");
         if (storedActivLink) {
-            setActivLink(storedActivLink);
+            setActiveLink(storedActivLink);
         }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem("activLink", activLink);
-    }, [activLink]);
+        localStorage.setItem("activeLink", activeLink);
+    }, [activeLink]);
 
 
     return (
         <aside
             className="flex flex-col w-64 h-screen max-h-full py-8 overflow-y-auto border-r rtl:border-r-0 rtl:border-l bg-purple-50 fixed">
-            <Link to="/" onClick={() => setActivLink("/")}>
+            <Link to="/" onClick={() => setActiveLink("/")}>
                 <img className="mx-auto h-15" src="/smartcrech.svg" alt="logo avec écrit smart crech"></img>
             </Link>
             <div className="flex flex-col justify-between flex-1 mt-6">
                 <nav className="ml-3 space-y-3 ">
                     <Link
-                        className={activLink === "/" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
-                        onClick={() => setActivLink("/")} to="/">
+                        className={activeLink === "/" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
+                        onClick={() => setActiveLink("/")} to="/">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                              stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round"
@@ -34,12 +34,12 @@ export const SideBar = () => {
                         </svg>
 
                         <span
-                            className={activLink === "/" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Home</span>
+                            className={activeLink === "/" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Home</span>
                     </Link>
 
                     <Link
-                        className={activLink === "/dashboard" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
-                        to="/dashboard" onClick={() => setActivLink("/dashboard")}>
+                        className={activeLink === "/dashboard" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
+                        to="/dashboard" onClick={() => setActiveLink("/dashboard")}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                              stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round"
@@ -47,12 +47,12 @@ export const SideBar = () => {
                         </svg>
 
                         <span
-                            className={activLink === "/dashboard" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Dashboard</span>
+                            className={activeLink === "/dashboard" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Dashboard</span>
                     </Link>
 
                     <Link
-                        className={activLink === "/events" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
-                        to="/events" onClick={() => setActivLink("/events")}>
+                        className={activeLink === "/events" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
+                        to="/events" onClick={() => setActiveLink("/events")}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                              stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round"
@@ -60,12 +60,12 @@ export const SideBar = () => {
                         </svg>
 
                         <span
-                            className={activLink === "/events" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Events</span>
+                            className={activeLink === "/events" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Events</span>
                     </Link>
 
                     <Link
-                        className={activLink === "/profile" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
-                        to="/profile" onClick={() => setActivLink("/profile")}>
+                        className={activeLink === "/profile" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
+                        to="/profile" onClick={() => setActiveLink("/profile")}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                              stroke="currentColor" className="w-5 h-5">
                             <path strokeLinecap="round" strokeLinejoin="round"
@@ -73,11 +73,11 @@ export const SideBar = () => {
                         </svg>
 
                         <span
-                            className={activLink === "/profile" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Profile</span>
+                            className={activeLink === "/profile" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Profile</span>
                     </Link>
                     <Link
-                        className={activLink === "/logout" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
-                        to="/logout" onClick={() => setActivLink("/logout")}>
+                        className={activeLink === "/logout" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
+                        to="/logout" onClick={() => setActiveLink("/logout")}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                              stroke="currentColor" className="w-5 h-5">
                             <g clipPath="url(#clip0_32_2951)">
@@ -91,7 +91,7 @@ export const SideBar = () => {
                         </svg>
 
                         <span
-                            className={activLink === "/logout" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Logout</span>
+                            className={activeLink === "/logout" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Logout</span>
                     </Link>
                 </nav>
             </div>
