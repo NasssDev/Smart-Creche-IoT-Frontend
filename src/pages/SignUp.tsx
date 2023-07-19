@@ -1,10 +1,11 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, ChangeEvent } from 'react';
+import { Link } from 'react-router-dom';
 
 export const SignUp = () => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        fetch('localhost/api/signup', {
+        fetch('http://localhost:3000/api/signup', {
             method: 'POST',
             body: JSON.stringify(SignUpFormData),
         })
@@ -18,6 +19,16 @@ export const SignUp = () => {
 
     const [SignUpFormData, setSignUpFormData] = useState({ siret: '', email: '', firstName: '', lastName: '', positionHeld: '', password: '', });
 
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target;
+        const SignUpName = name;
+        const SignUpValue = value;
+        setSignUpFormData((prevState) => ({
+            ...prevState,
+            [SignUpName]: SignUpValue,
+        }));
+    };
+
     return (
         <>
             <div className="flex justify-center items-center h-screen">
@@ -30,28 +41,29 @@ export const SignUp = () => {
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="username" type="text" placeholder="username@example.com" />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="username" type="text" name="username" placeholder="username@example.com" onChange={handleChange} value={SignUpFormData.email}
+                        />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">First Name*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Joe" type="text" placeholder="Joe" />
+                        <label className="block text-gray-700 text-sm font-bold mb-2">First Name*</label>
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Joe" type="text" name="Joe" placeholder="Joe" onChange={handleChange} value={SignUpFormData.firstName} />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Last Name*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Doe" type="text" placeholder="Doe" />
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Last Name*</label>
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Doe" type="text" name="Doe" placeholder="Doe" onChange={handleChange} value={SignUpFormData.lastName} />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">position held*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="mail@simmmple.com" type="select" placeholder="mail@simmmple.com" />
+                        <label className="block text-gray-700 text-sm font-bold mb-2">position held*</label>
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="mail@simmmple.com" type="select" name="mail" placeholder="mail@simmmple.com" onChange={handleChange} value={SignUpFormData.positionHeld} />
 
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Siret of the collective crech*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="49336137200011" type="text" placeholder="49336137200011" />
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Siret of the collective crech*</label>
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="49336137200011" type="number" name="siret" placeholder="49336137200011" onChange={handleChange} value={SignUpFormData.siret} />
                     </div>
                     <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="password" type="password" placeholder="Min. 8 characters" />
+                        <label className="block text-gray-700 text-sm font-bold mb-2">Password*</label>
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={SignUpFormData.password} />
                     </div>
                     <div className="mb-4">
                         <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white">Got It</button>
@@ -60,7 +72,7 @@ export const SignUp = () => {
                         <label htmlFor="KeepMeLoggedIn" className="text-gray-900">
                             Already resgitrated?
                         </label>
-                        <a className="text-crech-blue" href="#">Sign-in</a>
+                        <Link to="/sign-in" className="text-crech-blue">Sign-in</Link>
                     </div>
                     <footer className="mb-4 flex justify-center items-center absolute bottom-0">
                         <div className="text-gray-400">
@@ -89,7 +101,6 @@ export const SignUp = () => {
         </>
     )
 }
-
 
 
 

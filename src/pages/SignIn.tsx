@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const SignIn = () => {
   return (
     <>
@@ -24,7 +26,8 @@ export const SignIn = () => {
                 Keep me logged in
               </label>
             </div>
-            <a className="text-crech-blue" href="#">Forget password?</a>
+            {/* <Link to="/forget-password" className="text-crech-blue">Forget password?</Link> */}
+            <Link to="/sign-in" className="text-crech-blue">Forget password?</Link>
           </div>
           <div className="mb-4">
             <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white">Got It</button>
@@ -33,7 +36,7 @@ export const SignIn = () => {
             <label htmlFor="KeepMeLoggedIn" className="text-gray">
               Not registered yet?
             </label>
-            <a className="text-crech-blue" href="#">Create an Account</a>
+            <Link to="/sign-up" className="text-crech-blue">Create an Account</Link>
           </div>
           <footer className="mb-4 flex justify-center items-center absolute bottom-0">
             <div className="text-gray-400">
