@@ -1,5 +1,6 @@
 import { LabelPage } from "../components/LabelPage.tsx";
-//import DegreeBar from "../components/sensors/DegreeBar.tsx";
+// import {Yaya} from "../components/Yaya.tsx";
+// import DegreeBar from "../components/sensors/DegreeBar.tsx";
 export const Logout = () => {
 
     return (
