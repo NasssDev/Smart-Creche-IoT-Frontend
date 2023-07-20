@@ -7,7 +7,7 @@ export const ForgetPasswordChange = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('a')
-        fetch('https://iot-backend-ym14.onrender.com/api/forgetpassword', {
+        fetch('https://iot-backend-ym14.onrender.com/api', {
             method: 'POST',
             mode: "cors",
             body: JSON.stringify(forgetPasswordChangeFormData),

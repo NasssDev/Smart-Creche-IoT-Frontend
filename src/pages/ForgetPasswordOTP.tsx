@@ -7,10 +7,10 @@ export const ForgetPasswordOTP = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('a')
-        fetch('https://iot-backend-ym14.onrender.com/api/forgetpassword', {
+        fetch('https://iot-backend-ym14.onrender.com/api', {
             method: 'POST',
             mode: "cors",
-            body: JSON.stringify(forgetPassword2FormData),
+            body: JSON.stringify(ForgetPasswordOTP),
             credentials: "include",
             headers: new Headers({
                 "Content-type": "application/x-www-form-urlencoded",
@@ -24,10 +24,10 @@ export const ForgetPasswordOTP = () => {
             });
     };
 
-    const [forgetPassword2FormData, setforgetPassword2FormData] = useState({ otpcode: '', });
+    const [ForgetPasswordOTP, setForgetPasswordOTP] = useState({});
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        setforgetPassword2FormData(prevState => {
+        setForgetPasswordOTP(prevState => {
             return {
                 ...prevState,
                 [event.target.name]: event.target.value,
@@ -35,7 +35,7 @@ export const ForgetPasswordOTP = () => {
         }
         );
 
-        setforgetPassword2FormData(prevState => {
+        setForgetPasswordOTP(prevState => {
             console.log(prevState);
             return prevState;
         })
@@ -53,7 +53,7 @@ export const ForgetPasswordOTP = () => {
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="otpcode">OTP Code</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="number" type="number" name="number" placeholder="XXXXXX" onChange={handleChange} value={setforgetPassword2FormData.otpcode} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="" type="number" placeholder="XXXXXX" onChange={handleChange} />
                     </div>
                     <div className="mb-4 text-gray-500">
                         <p>You can resend OTP after 02:30 minutes. Resend. </p>

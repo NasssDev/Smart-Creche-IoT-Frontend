@@ -7,10 +7,10 @@ export const ForgetPassword = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('a')
-        fetch('https://iot-backend-ym14.onrender.com/api/forgetpassword', {
+        fetch('https://iot-backend-ym14.onrender.com/api', {
             method: 'POST',
             mode: "cors",
-            body: JSON.stringify(forgetPasswordChangedFormData),
+            body: JSON.stringify(forgetPasswordFormData),
             credentials: "include",
             headers: new Headers({
                 "Content-type": "application/x-www-form-urlencoded",
@@ -24,10 +24,10 @@ export const ForgetPassword = () => {
             });
     };
 
-    const [forgetPasswordChangedFormData, setforgetPasswordChangedFormData] = useState({ email: '', confirmemail: '', });
+    const [forgetPasswordFormData, setforgetPasswordFormData] = useState({ email: '', confirmemail: '', });
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        setforgetPasswordChangedFormData(prevState => {
+        setforgetPasswordFormData(prevState => {
             return {
                 ...prevState,
                 [event.target.name]: event.target.value,
@@ -35,7 +35,7 @@ export const ForgetPassword = () => {
         }
         );
 
-        setforgetPasswordChangedFormData(prevState => {
+        setforgetPasswordFormData(prevState => {
             console.log(prevState);
             return prevState;
         })
@@ -53,11 +53,11 @@ export const ForgetPassword = () => {
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="email">Email*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordChangedFormData.email} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordFormData.email} />
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="confirmemail">Confirm Email*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="confirmemail" type="confirmemail" name="confirmemail" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordChangedFormData.confirmemail} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="confirmemail" type="confirmemail" name="confirmemail" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordFormData.confirmemail} />
                     </div>
                     <div className="mb-4">
                         <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Reset Password</button>
