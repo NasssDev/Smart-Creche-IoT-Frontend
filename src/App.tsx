@@ -10,6 +10,10 @@ import { Logout } from "./pages/logout.tsx";
 import { SignIn } from "./pages/SignIn.tsx";
 import { SignUp } from "./pages/SignUp.tsx";
 import { SignUp2 } from "./pages/SignUp2.tsx";
+import { ForgetPassword } from "./pages/ForgetPassword.tsx";
+import { ForgetPasswordOTP } from "./pages/ForgetPasswordOTP.tsx";
+import { ForgetPasswordChange } from "./pages/ForgetPasswordChange.tsx";
+import { ForgetPasswordChanged } from "./pages/ForgetPasswordChanged.tsx";
 import CopyrightNotice from "./components/CopyrightNotice.tsx";
 
 function App() {
@@ -28,8 +32,12 @@ function App() {
                     <Route path="/sign-in" element={<SignIn />} />
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/sign-up2" element={<SignUp2 />} />
+                    <Route path="/ForgetPassword" element={<ForgetPassword />} />
+                    <Route path="/ForgetPasswordOTP" element={<ForgetPasswordOTP />} />
+                    <Route path="/ForgetPasswordChange" element={<ForgetPasswordChange />} />
+                    <Route path="/ForgetPasswordChanged" element={<ForgetPasswordChanged />} />
                 </Routes>
-                <CopyrightNotice/>
+                <CopyrightNotice />
             </div>
 
         </div>

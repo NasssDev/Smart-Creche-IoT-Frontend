@@ -6,9 +6,15 @@ export const SignIn = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log('a')
     fetch('https://iot-backend-ym14.onrender.com/api/signin', {
       method: 'POST',
-      body: JSON.stringify(SignInFormData),
+      mode: "cors",
+      body: JSON.stringify(signInFormData),
+      credentials: "include",
+      headers: new Headers({
+        "Content-type": "application/x-www-form-urlencoded",
+      })
     })
       .then(response => response.json()).then(data => {
         console.log(data);
@@ -18,7 +24,7 @@ export const SignIn = () => {
       });
   };
 
-  const [SignInFormData, setSignInFormData] = useState({ email: '', password: '', });
+  const [signInFormData, setSignInFormData] = useState({ email: '', password: '', });
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setSignInFormData(prevState => {
@@ -28,7 +34,12 @@ export const SignIn = () => {
       }
     }
     );
-  };
+
+    setSignInFormData(prevState => {
+      console.log(prevState);
+      return prevState;
+    })
+  }
 
   return (
     <>
@@ -42,11 +53,11 @@ export const SignIn = () => {
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="email">Email*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="username" name="username" placeholder="username@example.com" onChange={handleChange} />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={signInFormData.email} />
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="password">Password*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={signInFormData.password} />
           </div>
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center">
@@ -59,7 +70,7 @@ export const SignIn = () => {
             <Link to="/sign-in" className="text-crech-blue">Forget password?</Link>
           </div>
           <div className="mb-4">
-            <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white">Got It</button>
+            <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Got It</button>
           </div>
           <div className="flex items-center">
             <label htmlFor="KeepMeLoggedIn" className="text-gray">
