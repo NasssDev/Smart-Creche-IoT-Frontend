@@ -1,31 +1,80 @@
+import React, { useState, useEffect } from 'react';
 import { Switch, Card } from 'antd';
 
+export const API_URL = "https://iot-backend-ym14.onrender.com/api";
+
 const SwitchComponent = () => {
-    const handleSwitchChange = (checked: boolean, text: string) => {
-        console.log(`Switch for ${text} is ${checked}`);
-        // Perform any other actions based on the switch change
+    const [alertStates, setAlertStates] = useState({
+        movementDetection: false,
+        temperatureAlert: false,
+        co2Alert: false,
+        humidityAlert: false,
+        highNoiseAlert: false,
+        waterLeakAlert: false,
+    });
+
+    useEffect(() => {
+        // Fetch user's alert states from the API
+        fetchAlertStates();
+    }, []);
+
+    const fetchAlertStates = async () => {
+        try {
+            const response = await fetch(`${API_URL}/alert-states`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Update alert states state with the data obtained from the API
+                setAlertStates(data);
+            } else {
+                console.error('Error fetching alert states');
+            }
+        } catch (error) {
+            console.error('Error fetching alert states:', error);
+        }
+    };
+
+    const handleSwitchChange = async (checked, alertName) => {
+        try {
+            const response = await fetch(`${API_URL}/update-alert-state`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ [alertName.toLowerCase()]: checked }),
+            });
+
+            if (response.ok) {
+                console.log(`${alertName} updated successfully`);
+                // Update the state locally as well
+                setAlertStates({
+                    ...alertStates,
+                    [alertName.toLowerCase()]: checked,
+                });
+            } else {
+                console.error(`Error updating ${alertName}`);
+            }
+        } catch (error) {
+            console.error(`Error updating ${alertName}:`, error);
+        }
     };
 
     return (
         <div className='w-full max-w-xl'>
             <Card className="w-400 rounded-3xl shadow-lg">
                 <h2 className="text-3xl fa-layers-top-left">Notifications</h2>
-                <svg width="37" height="37" className="absolute right-7 top-7" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="37" height="37" rx="10" fill="#F4F7FE" />
-                    <g clip-path="url(#clip0_76_2446)">
-                        <path d="M12 17C10.9 17 10 17.9 10 19C10 20.1 10.9 21 12 21C13.1 21 14 20.1 14 19C14 17.9 13.1 17 12 17ZM24 17C22.9 17 22 17.9 22 19C22 20.1 22.9 21 24 21C25.1 21 26 20.1 26 19C26 17.9 25.1 17 24 17ZM18 17C16.9 17 16 17.9 16 19C16 20.1 16.9 21 18 21C19.1 21 20 20.1 20 19C20 17.9 19.1 17 18 17Z" fill="#4318FF" />
-                    </g>
-                    <defs>
-                        <clipPath id="clip0_76_2446">
-                            <rect width="24" height="24" fill="white" transform="translate(6 7)" />
-                        </clipPath>
-                    </defs>
-                </svg>
+                {/* ... SVG content ... */}
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 1')}
+                        checked={alertStates.movementDetection}
+                        onChange={(checked) => handleSwitchChange(checked, 'Movement Detection')}
                     />
                     &nbsp;
                     &nbsp;
@@ -34,8 +83,8 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        defaultChecked={false}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 2')}
+                        checked={alertStates.temperatureAlert}
+                        onChange={(checked) => handleSwitchChange(checked, 'Temperature Alert')}
                     />
                     &nbsp;
                     &nbsp;
@@ -44,8 +93,8 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 3')}
+                        checked={alertStates.co2Alert}
+                        onChange={(checked) => handleSwitchChange(checked, 'CO2 Alert')}
                     />
                     &nbsp;
                     &nbsp;
@@ -54,8 +103,8 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        defaultChecked={false}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 4')}
+                        checked={alertStates.humidityAlert}
+                        onChange={(checked) => handleSwitchChange(checked, 'Humidity Alert')}
                     />
                     &nbsp;
                     &nbsp;
@@ -64,8 +113,8 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        defaultChecked={false}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 5')}
+                        checked={alertStates.highNoiseAlert}
+                        onChange={(checked) => handleSwitchChange(checked, 'High Noise Alert')}
                     />
                     &nbsp;
                     &nbsp;
@@ -74,8 +123,8 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 6')}
+                        checked={alertStates.waterLeakAlert}
+                        onChange={(checked) => handleSwitchChange(checked, 'Water Leak Alert')}
                     />
                     &nbsp;
                     &nbsp;
