@@ -10,6 +10,7 @@ import { Logout } from "./pages/logout.tsx";
 import { SignIn } from "./pages/SignIn.tsx";
 import { SignUp } from "./pages/SignUp.tsx";
 import { SignUp2 } from "./pages/SignUp2.tsx";
+import { Detail } from "./pages/Detail.tsx";
 
 function App() {
     const [count] = useState(1)
@@ -27,6 +28,7 @@ function App() {
                     <Route path="/sign-in" element={<SignIn />} />
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/sign-up2" element={<SignUp2 />} />
+                    <Route path="/detail" element={<Detail />} />
                 </Routes>
             </div>
         </div>
