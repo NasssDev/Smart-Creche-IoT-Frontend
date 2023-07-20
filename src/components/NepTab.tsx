@@ -2,7 +2,7 @@ import {SensorCardCol3} from "./sensors/SensorCardCol3.tsx";
 import Toggle from "./toggle/Toggle.tsx";
 import {useState} from "react";
 
-export const NepTab = () => {
+export const NepTab = ({label}:{label:string}) => {
 
     const [toggled, setToggled] = useState(false);
     const handleClick = () => {
