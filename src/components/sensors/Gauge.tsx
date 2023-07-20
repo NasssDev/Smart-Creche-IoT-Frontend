@@ -3,7 +3,7 @@ import {useEffect, useRef} from "react";
 
 type EChartsOption = echarts.EChartsOption;
 
-export const Gauge = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string|null}) => {
+export const Gauge = ({labelForSiesteTabOnly, toggled}:{labelForSiesteTabOnly:string|null, toggled:boolean}) => {
     const chartRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
@@ -13,6 +13,7 @@ export const Gauge = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string|null
             series: [
                 {
                     type: 'gauge',
+                    center: ['50%', '55%'],
                     axisLine: {
                         lineStyle: {
                             width: 10,
@@ -37,8 +38,8 @@ export const Gauge = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string|null
                         }
                     },
                     splitLine: {
-                        distance: -30,
-                        length: 30,
+                        distance: -10,
+                        length: 10,
                         lineStyle: {
                             color: '#fff',
                             width: 4
@@ -92,5 +93,5 @@ export const Gauge = ({labelForSiesteTabOnly}:{labelForSiesteTabOnly:string|null
         };
     }, []);
 
-    return <div><span className="absolute">{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
+    return <div><span className={`absolute ${toggled ? "text-gray-500" : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
 }

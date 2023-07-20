@@ -18,7 +18,7 @@ function App() {
     return <>
         <div className="flex flex-col">
             {count === 1 && <SideBar />}
-            <div className={count === 1 ? "flex-1 overflow-hidden ml-64 px-10" : "flex-1 w-full overflow-hidden mx-auto px-10"} >
+            <div className={count === 1 ? "flex-1 overflow-hidden ml-64 px-10 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto px-10 h-screen max-h-full"} >
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />

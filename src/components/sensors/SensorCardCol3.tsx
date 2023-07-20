@@ -4,7 +4,7 @@ import {SensorCardCol2} from "./SensorCardCol2.tsx";
 import {ErrorPop} from "../responsePopUp/ErrorPop.tsx";
 import {ReactNode, useEffect, useState} from "react";
 
-export const SensorCardCol3 = ({label}: { label: string }) => {
+export const SensorCardCol3 = ({label, toggled}: { label: string, toggled:boolean }) => {
 
     const [componentToRender, setComponentToRender] = useState<ReactNode>("");
 
@@ -13,10 +13,10 @@ export const SensorCardCol3 = ({label}: { label: string }) => {
             case 'CO2' :
             case 'Brightness':
             case 'Temperature':
-                setComponentToRender(<Gauge labelForSiesteTabOnly={label}/>);
+                setComponentToRender(<Gauge toggled={toggled} labelForSiesteTabOnly={label}/>);
                 break;
             case 'Humidity':
-                setComponentToRender(<Brightness labelForSiesteTabOnly={label}/>);
+                setComponentToRender(<Brightness toggled={toggled} labelForSiesteTabOnly={label}/>);
                 break;
             case 'Water Leak Detection':
                 setComponentToRender(<SensorCardCol2 label={""}/>);

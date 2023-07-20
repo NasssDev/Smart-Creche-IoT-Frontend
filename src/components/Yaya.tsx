@@ -2,7 +2,7 @@ import {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {EChartsOption} from "echarts";
 
-export const InteractivePlan = () => {
+export const Yaya = () => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
