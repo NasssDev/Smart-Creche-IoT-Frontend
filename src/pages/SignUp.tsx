@@ -20,13 +20,13 @@ export const SignUp = () => {
     const [SignUpFormData, setSignUpFormData] = useState({ siret: '', email: '', firstName: '', lastName: '', positionHeld: '', password: '', });
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
-        const { name, value } = event.target;
-        const SignUpName = name;
-        const SignUpValue = value;
-        setSignUpFormData((prevState) => ({
-            ...prevState,
-            [SignUpName]: SignUpValue,
-        }));
+        setSignUpFormData(prevState => {
+            return {
+                ...prevState,
+                [event.target.name]: event.target.value,
+            }
+        }
+        );
     };
 
     return (
@@ -46,11 +46,11 @@ export const SignUp = () => {
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">First Name*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Joe" type="text" name="Joe" placeholder="Joe" onChange={handleChange} value={SignUpFormData.firstName} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Joe" type="text" name="Joe" placeholder="Joe" onChange={handleChange} />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Last Name*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Doe" type="text" name="Doe" placeholder="Doe" onChange={handleChange} value={SignUpFormData.lastName} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Doe" type="text" name="Doe" placeholder="Doe" onChange={handleChange} />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">position held*</label>

@@ -21,13 +21,13 @@ export const SignIn = () => {
   const [SignInFormData, setSignInFormData] = useState({ email: '', password: '', });
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target;
-    const SignInName = name;
-    const SignInValue = value;
-    setSignInFormData((prevState) => ({
-      ...prevState,
-      [SignInName]: SignInValue,
-    }));
+    setSignInFormData(prevState => {
+      return {
+        ...prevState,
+        [event.target.name]: event.target.value,
+      }
+    }
+    );
   };
 
   return (
@@ -42,11 +42,11 @@ export const SignIn = () => {
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="email">Email*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="username" type="text" name="username" placeholder="username@example.com" onChange={handleChange} value={SignInFormData.email} />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="username" name="username" placeholder="username@example.com" onChange={handleChange} />
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="password">Password*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={SignInFormData.password} />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} />
           </div>
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center">
