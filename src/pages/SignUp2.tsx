@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const SignUp2 = () => {
     return (
         <>
@@ -72,8 +74,11 @@ export const SignUp2 = () => {
                             </defs>
                         </svg>
                     </div>
+
                     <div className="mt-4">
-                        <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white">Sign-In</button>
+                        <Link to="/sign-in">
+                            <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white">Sign-In</button>
+                        </Link>
                     </div>
                     <footer className="mb-4 flex justify-center items-center absolute bottom-0">
                         <div className="text-gray-400">
