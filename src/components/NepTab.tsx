@@ -2,7 +2,7 @@ import {SensorCardCol3} from "./sensors/SensorCardCol3.tsx";
 import Toggle from "./toggle/Toggle.tsx";
 import {useState} from "react";
 
-export const NepTab = () => {
+export const NepTab = ({label}:{label:string}) => {
 
     const [toggled, setToggled] = useState(false);
     const handleClick = () => {
@@ -13,7 +13,7 @@ export const NepTab = () => {
         <div className={`p-4 col-span-3 shadow-lg rounded-2xl ${toggled ? " bg-gray-800 " : ""}`}>
             <div className="flex items-center">
                 <div className={`text-left block text-xl font-bold ${toggled ? "text-gray-400":"text-gray-700"}`}>
-                    <span className={`text-left block text-xl font-medium text-gray-500`}>{toggled ? "In Progress" : "Last nep"}</span>
+                    <span className={`text-left block text-xl font-medium text-gray-500`}>{toggled ? "In Progress" : label}</span>
                     {toggled ? "since 14:45" : "from 12:21 to 14:21"}
                 </div>
                 <Toggle toggled={toggled} onClick={handleClick}/>

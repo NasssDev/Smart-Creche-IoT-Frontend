@@ -1,10 +1,9 @@
-import React from 'react';
 import { Card, Input } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import {FormEvent} from "react";
+
 
 const GeneralInformations = () => {
-    const handleSubmit = (event) => {
+    const handleSubmit = (event:FormEvent) => {
         event.preventDefault();
         // Handle form submission logic here
     };
