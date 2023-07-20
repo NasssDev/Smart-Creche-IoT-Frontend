@@ -4,13 +4,13 @@ import { Switch, Card } from 'antd';
 export const API_URL = "https://iot-backend-ym14.onrender.com/api";
 
 const SwitchComponent = () => {
-    const [alertStates, setAlertStates] = useState({
-        movementDetection: false,
-        temperatureAlert: false,
-        co2Alert: false,
-        humidityAlert: false,
-        highNoiseAlert: false,
-        waterLeakAlert: false,
+    const [notifications, setAlertStates] = useState({
+        mouvement: false,
+        temperature: false,
+        co2: false,
+        humidity: false,
+        noise: false,
+        waterLeak: false,
     });
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const SwitchComponent = () => {
 
     const fetchAlertStates = async () => {
         try {
-            const response = await fetch(`${API_URL}/alert-states`, {
+            const response = await fetch(`${API_URL}/profil`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -41,7 +41,7 @@ const SwitchComponent = () => {
 
     const handleSwitchChange = async (checked, alertName) => {
         try {
-            const response = await fetch(`${API_URL}/update-alert-state`, {
+            const response = await fetch(`${API_URL}/profil`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -73,7 +73,7 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        checked={alertStates.movementDetection}
+                        checked={notifications.mouvement}
                         onChange={(checked) => handleSwitchChange(checked, 'Movement Detection')}
                     />
                     &nbsp;
@@ -83,7 +83,7 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        checked={alertStates.temperatureAlert}
+                        checked={notifications.temperature}
                         onChange={(checked) => handleSwitchChange(checked, 'Temperature Alert')}
                     />
                     &nbsp;
@@ -93,7 +93,7 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        checked={alertStates.co2Alert}
+                        checked={notifications.co2}
                         onChange={(checked) => handleSwitchChange(checked, 'CO2 Alert')}
                     />
                     &nbsp;
@@ -103,7 +103,7 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        checked={alertStates.humidityAlert}
+                        checked={notifications.humidity}
                         onChange={(checked) => handleSwitchChange(checked, 'Humidity Alert')}
                     />
                     &nbsp;
@@ -113,7 +113,7 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        checked={alertStates.highNoiseAlert}
+                        checked={notifications.noise}
                         onChange={(checked) => handleSwitchChange(checked, 'High Noise Alert')}
                     />
                     &nbsp;
@@ -123,7 +123,7 @@ const SwitchComponent = () => {
                 <br />
                 <div className="flex items-center">
                     <Switch
-                        checked={alertStates.waterLeakAlert}
+                        checked={notifications.waterLeak}
                         onChange={(checked) => handleSwitchChange(checked, 'Water Leak Alert')}
                     />
                     &nbsp;

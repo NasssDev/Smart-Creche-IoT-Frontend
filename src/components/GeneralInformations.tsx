@@ -20,7 +20,7 @@ const GeneralInformations = () => {
 
     const fetchGeneralInfo = async () => {
         try {
-            const response = await fetch(`${API_URL}/general-info`, {
+            const response = await fetch(`${API_URL}/profil`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -43,7 +43,7 @@ const GeneralInformations = () => {
         event.preventDefault();
         // Perform form submission logic here
         try {
-            const response = await fetch(`${API_URL}/update-general-info`, {
+            const response = await fetch(`${API_URL}/profil`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -145,9 +145,10 @@ const GeneralInformations = () => {
                         className="text-gray-700 rounded py-1 px-3"
                         id="grid-positionheld"
                         type="text"
-                        placeholder="Directrice"
+                        placeholder="Manager"
                         name="positionHeld"
                         value={generalInfo.positionHeld}
+                        disabled='true'
                         onChange={handleChange}
                     />
                 </div>
@@ -167,24 +168,7 @@ const GeneralInformations = () => {
                         placeholder="49336137200011"
                         name="siret"
                         value={generalInfo.siret}
-                        onChange={handleChange}
-                    />
-                </div>
-
-                <div className="mb-2">
-                    <label
-                        className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
-                        htmlFor="grid-password"
-                    >
-                        Password
-                    </label>
-                    <Input.Password
-                        size="small"
-                        className="text-gray-700 rounded py-1 px-3"
-                        id="grid-password"
-                        placeholder="***************"
-                        name="password"
-                        value={generalInfo.password}
+                        disabled='true'
                         onChange={handleChange}
                     />
                 </div>
