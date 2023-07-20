@@ -1,10 +1,39 @@
+import { FormEvent, useState, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 
+
 export const SignIn = () => {
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    fetch('https://iot-backend-ym14.onrender.com/api/signin', {
+      method: 'POST',
+      body: JSON.stringify(SignInFormData),
+    })
+      .then(response => response.json()).then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error', error);
+      });
+  };
+
+  const [SignInFormData, setSignInFormData] = useState({ email: '', password: '', });
+
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    const SignInName = name;
+    const SignInValue = value;
+    setSignInFormData((prevState) => ({
+      ...prevState,
+      [SignInName]: SignInValue,
+    }));
+  };
+
   return (
     <>
       <div className="flex justify-center items-center h-screen">
-        <form className="max-w-sm mx-auto">
+        <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
           <div className="mb-4 text-40">
             Sign In
           </div>
@@ -13,11 +42,11 @@ export const SignIn = () => {
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="email">Email*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="username" type="text" placeholder="username@example.com" />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="username" type="text" name="username" placeholder="username@example.com" onChange={handleChange} value={SignInFormData.email} />
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="password">Password*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" placeholder="Min. 8 characters" />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={SignInFormData.password} />
           </div>
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center">

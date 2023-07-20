@@ -5,7 +5,7 @@ export const SignUp = () => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        fetch('http://localhost:3000/api/signup', {
+        fetch('https://iot-backend-ym14.onrender.com/api/signup', {
             method: 'POST',
             body: JSON.stringify(SignUpFormData),
         })
