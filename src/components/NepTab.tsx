@@ -1,12 +1,55 @@
+import moment from "moment";
+import { API_URL } from "../constants/constants.tsx";
 import {SensorCardCol3} from "./sensors/SensorCardCol3.tsx";
 import Toggle from "./toggle/Toggle.tsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export const NepTab = ({label}:{label:string}) => {
 
+    const [sleepModeInfo, setSleepModeInfo] = useState<any>({});
     const [toggled, setToggled] = useState(false);
+    const getSleepModeInfo = () => {
+        fetch(API_URL+ "/sleep_mode/info", {
+            method: 'GET',
+            headers: new Headers({
+              "Content-type": "application/x-www-form-urlencoded",
+            })
+          })
+            .then(response => response.json()).then(data => {
+                setSleepModeInfo(data.payload);
+                console.log(data);
+                if (data.payload.info.end) {
+                    setToggled(false);
+                }
+                // setEvents(data.payload);
+            })
+            .catch(error => {
+              console.error('Error', error);
+            });
+    }
+    const toggleMode = () => {
+        const prefixUrl = toggled ? "off" : "on";
+        fetch(API_URL+ "/sleep_mode/"+prefixUrl, {
+            method: 'GET',
+            headers: new Headers({
+              "Content-type": "application/x-www-form-urlencoded",
+            })
+          })
+            .then(response => response.json()).then(data => {
+                setToggled(!toggled);
+                // setEvents(data.payload);
+            })
+            .catch(error => {
+              console.error('Error', error);
+            });
+    }
+
+    useEffect(() => {
+        getSleepModeInfo();
+    },[toggled]);
     const handleClick = () => {
-        setToggled((s) => !s);
+        toggleMode()
+        // setToggled((s) => !s);
     };
 
     return (
@@ -14,7 +57,7 @@ export const NepTab = ({label}:{label:string}) => {
             <div className="flex items-center">
                 <div className={`text-left block text-xl font-bold ${toggled ? "text-gray-400":"text-gray-700"}`}>
                     <span className={`text-left block text-xl font-medium text-gray-500`}>{toggled ? "In Progress" : label}</span>
-                    {toggled ? "since 14:45" : "from 12:21 to 14:21"}
+                    {moment(sleepModeInfo?.info?.start).format("DD MMMM : HH:mm") + " - " + moment(sleepModeInfo?.info?.end).format("HH:mm")}
                 </div>
                 <Toggle toggled={toggled} onClick={handleClick}/>
             </div>
