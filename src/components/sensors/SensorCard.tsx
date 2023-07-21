@@ -1,6 +1,6 @@
 import {Gauge} from './Gauge.tsx';
 import {Brightness} from "./Brightness.tsx";
-import {ErrorPop} from "../responsePopUp/ErrorPop.tsx";
+// import {ErrorPop} from "../responsePopUp/ErrorPop.tsx";
 import {SensorCardCol1} from "./SensorCardCol1.tsx";
 import {SensorCardCol2} from "./SensorCardCol2.tsx";
 import {NepTab} from "../NepTab.tsx";
@@ -36,6 +36,7 @@ export const SensorCard = () => {
                 });
 
     }
+    fetchData('');
     useEffect(() => { 
         fetch(API_URL+ "/sensor_val_avg/131", {
             method: 'GET',

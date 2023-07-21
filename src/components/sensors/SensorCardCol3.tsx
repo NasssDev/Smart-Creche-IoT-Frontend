@@ -4,8 +4,8 @@ import {SensorCardCol2} from "./SensorCardCol2.tsx";
 import {ErrorPop} from "../responsePopUp/ErrorPop.tsx";
 import {ReactNode, useEffect, useState} from "react";
 
-export const SensorCardCol3 = ({ label, toggled, chartData }: { label: string, toggled: boolean, chartData: Array<Object> }) => {
-    let renderComp = [];
+export const SensorCardCol3 = ({ label, toggled, chartData }: { label: string, toggled: boolean, chartData: Array<Object|string> }) => {
+    // let renderComp = [];
     const [componentToRender, setComponentToRender] = useState<ReactNode>("");
     const [dataObj, setdataObj] = useState<any>({});
         useEffect(() => {

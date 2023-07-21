@@ -1,12 +1,12 @@
 import {useEffect} from "react";
-import {SensorCardCol3} from "./sensors/SensorCardCol3.tsx";
+// import {SensorCardCol3} from "./sensors/SensorCardCol3.tsx";
 
 export const Modal = ({isModalOpen, setIsModalOpen, sensorsData}: {
     isModalOpen: boolean,
     setIsModalOpen: any,
     sensorsData: any[]
 }) => {
-
+console.log(sensorsData);
     const closeModal = () => {
         setIsModalOpen(false);
     };
@@ -36,9 +36,9 @@ export const Modal = ({isModalOpen, setIsModalOpen, sensorsData}: {
                         <div className="fixed inset-0 flex items-center justify-center z-10 overflow-y-auto">
                             <div className="relative p-10 w-3/4 max-w-3/4 max-h-96 overflow-y-auto bg-white rounded-lg shadow-2xl">
                                 <div className="grid grid-cols-4 gap-6">
-                                        {sensorsData.map((elem,index) => {
-                                            return <SensorCardCol3 key={index} label={elem.sensor_name} toggled={false} sensorsData={sensorsData}/>
-                                        })}
+                                        {/*{sensorsData.map((elem,index) => {*/}
+                                        {/*    return <SensorCardCol3 key={index} label={elem.sensor_name} toggled={false} sensorsData={[""]}/>*/}
+                                        {/*})}*/}
                                 </div>
 
                                 <div className="w-full mt-4 sm:mt-6 sm:-mx-2">

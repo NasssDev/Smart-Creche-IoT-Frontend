@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react"
 import { API_URL } from "../constants/constants";
 import moment from 'moment';
-import { Space, Table, Tag } from 'antd';
-import type { MenuProps } from 'antd';
-import { Button, Dropdown } from 'antd';
+import { Table} from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-interface Event {
-    createdAt: Date;
-    sensor: String;
-    action: String;
-    // Other properties...
-}
+// interface Event {
+//     createdAt: Date;
+//     sensor: String;
+//     action: String;
+//     // Other properties...
+// }
 
 interface DataType {
     date: string;
