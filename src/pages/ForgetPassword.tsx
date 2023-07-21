@@ -53,11 +53,11 @@ export const ForgetPassword = () => {
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="email">Email*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordFormData.email} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordFormData.email} required />
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="confirmemail">Confirm Email*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="confirmemail" type="confirmemail" name="confirmemail" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordFormData.confirmemail} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="confirmemail" type="confirmemail" name="confirmemail" placeholder="username@example.com" onChange={handleChange} value={forgetPasswordFormData.confirmemail} required />
                     </div>
                     <div className="mb-4">
                         <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Reset Password</button>

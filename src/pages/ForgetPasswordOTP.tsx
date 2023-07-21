@@ -53,7 +53,7 @@ export const ForgetPasswordOTP = () => {
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="otpcode">OTP Code</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="" type="number" placeholder="XXXXXX" onChange={handleChange} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="" type="number" placeholder="XXXXXX" onChange={handleChange} required />
                     </div>
                     <div className="mb-4 text-gray-500">
                         <p>You can resend OTP after 02:30 minutes. Resend. </p>

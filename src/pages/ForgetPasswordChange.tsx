@@ -53,11 +53,11 @@ export const ForgetPasswordChange = () => {
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="password">New Password*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={forgetPasswordChangeFormData.password} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={forgetPasswordChangeFormData.password} required />
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="confirmpassword">Confirm Password*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="confirmpassword" type="confirmpassword" name="confirmpassword" placeholder="Min. 8 characters" onChange={handleChange} value={forgetPasswordChangeFormData.confirmpassword} />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="confirmpassword" type="confirmpassword" name="confirmpassword" placeholder="Min. 8 characters" onChange={handleChange} value={forgetPasswordChangeFormData.confirmpassword} required />
                     </div>
                     <div className="mb-4">
                         <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Save</button>

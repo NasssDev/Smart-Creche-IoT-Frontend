@@ -16,7 +16,9 @@ export const ForgetPasswordChanged = () => {
                             Click below to login magincally.</p>
                     </div>
                     <div className="mb-4">
-                        <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Sign-In</button>
+                        <Link to="/sign-in">
+                            <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Sign-In</button>
+                        </Link>
                     </div>
                     <div className="flex items-center">
                         <label htmlFor="KeepMeLoggedIn" className="text-gray">

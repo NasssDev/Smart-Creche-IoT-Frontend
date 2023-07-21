@@ -53,11 +53,11 @@ export const SignIn = () => {
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="email">Email*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={signInFormData.email} />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={signInFormData.email} required />
           </div>
           <div className="mb-4">
             <label className="text-black" htmlFor="password">Password*</label>
-            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={signInFormData.password} />
+            <input className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={signInFormData.password} required />
           </div>
           <div className="mb-4 flex items-center justify-between">
             <div className="flex items-center">
@@ -66,8 +66,7 @@ export const SignIn = () => {
                 Keep me logged in
               </label>
             </div>
-            {/* <Link to="/forget-password" className="text-crech-blue">Forget password?</Link> */}
-            <Link to="/sign-in" className="text-crech-blue">Forget password?</Link>
+            <Link to="/ForgetPassword" className="text-crech-blue">Forget password?</Link>
           </div>
           <div className="mb-4">
             <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Got It</button>
