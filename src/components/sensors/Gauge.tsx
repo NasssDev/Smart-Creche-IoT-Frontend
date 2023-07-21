@@ -3,9 +3,10 @@ import {useEffect, useRef} from "react";
 
 type EChartsOption = echarts.EChartsOption;
 
-export const Gauge = ({labelForSiesteTabOnly, toggled}:{labelForSiesteTabOnly:string|null, toggled:boolean}) => {
+export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:any|{}}) => {
     const chartRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
+        console.log("inside chart",info);
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
         let option:EChartsOption = {};
 
@@ -52,32 +53,34 @@ export const Gauge = ({labelForSiesteTabOnly, toggled}:{labelForSiesteTabOnly:st
                     },
                     detail: {
                         valueAnimation: true,
-                        formatter: '{value} %',
+                        formatter: '{value} '+info?.unit,
                         color: 'inherit',
                         fontSize:'10vw'
                     },
                     data: [
                         {
-                            value: 50,
+                            value: info?.value,
                         }
-                    ]
+                    ],
+                    max: info?.high,
+                    min: info?.low
                 }
             ]
         };
 
-        setInterval(function () {
             myChart.setOption<echarts.EChartsOption>({
                 series: [
                     {
+                      
                         data: [
                             {
-                                value: +(Math.random() * 100).toFixed(2)
+
+                                value: info?.value?.toFixed(2)
                             }
                         ]
                     }
                 ]
             });
-        }, 20000);
 
         option && myChart.setOption(option);
 
@@ -91,7 +94,7 @@ export const Gauge = ({labelForSiesteTabOnly, toggled}:{labelForSiesteTabOnly:st
             window.removeEventListener("resize", handleWindowResize);
             myChart.dispose();
         };
-    }, []);
+    }, [info]);
 
     return <div><span className={`absolute ${toggled ? "text-gray-500" : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
 }

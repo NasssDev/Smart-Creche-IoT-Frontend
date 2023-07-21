@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-export const Brightness = ({labelForSiesteTabOnly, toggled: toggled}:{labelForSiesteTabOnly:string|null, toggled:boolean|null}) => {
+export const Brightness = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean|null, info:any}) => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -10,7 +10,7 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled}:{labelForSi
         const option = {
             tooltip: {
                 trigger: 'item',
-                formatter: '{b}: {c}%'
+                formatter: '{b}: {c}'
             },
             series: [
                 {
@@ -26,8 +26,8 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled}:{labelForSi
                         },
                     },
                     data: [
-                        { value: 80, name: 'Humidity', itemStyle: {color:'lightblue'} },
-                        { value: 20, name: 'Dry', itemStyle: {color:'orange'}},
+                        { value: info?.value, name: 'Brightness', itemStyle: {color:'lightblue'} },
+                        { value: 100 -info?.value, name: 'Darkness', itemStyle: {color:'orange'}},
                         {
                             value: 70,
                             name:'brightness',
@@ -50,7 +50,7 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled}:{labelForSi
                     left: 'center',
                     top: '85%',
                     style: {
-                        text: 'The Humidity is at '+80+'%',
+                        text: 'okok',
                         textAlign: 'center',
                         fill: toggled ? 'grey' : 'grey',
                     },
@@ -60,7 +60,7 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled}:{labelForSi
                     left: 'center',
                     top: '70%',
                     style: {
-                        text: 80+'%',
+                        text: Number(info?.value.toFixed(2))+' '+info?.unit,
                         textAlign: 'center',
                         fill: toggled ? 'grey' : 'grey',
                         font: 'bolder 1.5em sans-serif'
