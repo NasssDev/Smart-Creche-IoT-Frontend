@@ -19,7 +19,7 @@ export const NepTab = ({label}:{label:string}) => {
                 <Toggle toggled={toggled} onClick={handleClick}/>
             </div>
             <div className={`w-full grid grid-cols-4 p-4 overflow-hidden rounded-2xl ${toggled ? "bg-transparent" : ""}`}>
-                {["CO2", "Humidity", "Temperature", "Brightness"].map((elem, index) => (
+                {["CO2", "HUMIDITY", "TEMPERATURE", "LUMINOSITY"].map((elem, index) => (
                     <SensorCardCol3 key={index} label={elem} toggled={toggled} />
                 ))}
             </div>

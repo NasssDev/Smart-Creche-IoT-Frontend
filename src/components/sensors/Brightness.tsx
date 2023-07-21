@@ -26,8 +26,8 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled}:{labelForSi
                         },
                     },
                     data: [
-                        { value: 80, name: 'Brightness', itemStyle: {color:'lightblue'} },
-                        { value: 20, name: 'Darkness', itemStyle: {color:'orange'}},
+                        { value: 80, name: 'Humidity', itemStyle: {color:'lightblue'} },
+                        { value: 20, name: 'Dry', itemStyle: {color:'orange'}},
                         {
                             value: 70,
                             name:'brightness',

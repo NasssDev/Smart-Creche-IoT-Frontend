@@ -10,11 +10,11 @@ export const SensorCard = ({label}: { label: string }) => {
 
     switch (label) {
         case 'CO2' :
-        case 'Brightness':
-        case 'Temperature':
+        case 'LUMINOSITY':
+        case 'TEMPERATURE':
             componentToRender = <SensorCardCol1 label={label} componentChild={<Gauge labelForSiesteTabOnly={""} toggled={false}/>}/>;
             break;
-        case 'Humidity':
+        case 'HUMIDITY':
             componentToRender = <SensorCardCol1 label={label} componentChild={<Brightness  labelForSiesteTabOnly={""} toggled={false}/>}/>;
             break;
         case 'Water Leak Detection':
