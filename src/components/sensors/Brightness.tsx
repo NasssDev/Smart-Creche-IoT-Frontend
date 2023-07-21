@@ -60,7 +60,7 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled, info}:{labe
                     left: 'center',
                     top: '70%',
                     style: {
-                        text: Number(info?.value.toFixed(2))+' '+info?.unit,
+                        text: Number(info?.value)+' '+info?.unit,
                         textAlign: 'center',
                         fill: toggled ? 'grey' : 'grey',
                         font: 'bolder 1.5em sans-serif'
