@@ -257,3 +257,23 @@
     width: 4px;
     transform: translate(-3px, 0);
 }
+
+
+
+/*  *   *   * THERMOMETRE *   *   *  */
+
+.ant-slider-rail {
+    background: linear-gradient(to top, green, yellow,orange,red);
+}
+
+.ant-slider-track {
+    background-color: transparent !important;
+}
+
+.ant-slider-handle, .ant-slider {
+    pointer-events: none;
+}
+
+.ant-progress-text {
+    color:#6b7280 !important;
+}

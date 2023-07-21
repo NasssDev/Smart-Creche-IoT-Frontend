@@ -7,12 +7,7 @@ export const SignUp = () => {
         e.preventDefault();
         fetch('https://iot-backend-ym14.onrender.com/api/signup', {
             method: 'POST',
-            mode: "cors",
-            body: JSON.stringify(signUpFormData),
-            credentials: "include",
-            headers: new Headers({
-                "Content-type": "application/x-www-form-urlencoded",
-            })
+            body: JSON.stringify(SignUpFormData),
         })
             .then(response => response.json()).then(data => {
                 console.log(data);
@@ -22,7 +17,7 @@ export const SignUp = () => {
             });
     };
 
-    const [signUpFormData, setSignUpFormData] = useState({ siret: '', email: '', firstName: '', lastName: '', positionHeld: '', password: '', });
+    const [SignUpFormData, setSignUpFormData] = useState({ siret: '', email: '', firstName: '', lastName: '', positionHeld: '', password: '', });
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setSignUpFormData(prevState => {
@@ -32,11 +27,7 @@ export const SignUp = () => {
             }
         }
         );
-        setSignUpFormData(prevState => {
-            console.log(prevState);
-            return prevState;
-        })
-    }
+    };
 
     return (
         <>
@@ -50,32 +41,32 @@ export const SignUp = () => {
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="email" type="email" name="email" placeholder="username@example.com" onChange={handleChange} value={signUpFormData.email} required
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="username" type="text" name="username" placeholder="username@example.com" onChange={handleChange} value={SignUpFormData.email}
                         />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">First Name*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="firstName" type="text" name="firstName" placeholder="Joe" onChange={handleChange} value={signUpFormData.firstName} required />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Joe" type="text" name="Joe" placeholder="Joe" onChange={handleChange} />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Last Name*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="lastName" type="text" name="lastName" placeholder="Doe" onChange={handleChange} value={signUpFormData.lastName} required />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="Doe" type="text" name="Doe" placeholder="Doe" onChange={handleChange} />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">position held*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="positionHeld" type="select" name="positionHeld" placeholder="mail@simmmple.com" onChange={handleChange} value={signUpFormData.positionHeld} required />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="mail@simmmple.com" type="select" name="mail" placeholder="mail@simmmple.com" onChange={handleChange} value={SignUpFormData.positionHeld} />
 
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Siret of the collective crech*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="siret" type="number" name="siret" placeholder="49336137200011" onChange={handleChange} value={signUpFormData.siret} required />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="49336137200011" type="number" name="siret" placeholder="49336137200011" onChange={handleChange} value={SignUpFormData.siret} />
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2">Password*</label>
-                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={signUpFormData.password} required />
+                        <input className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10" id="password" type="password" name="password" placeholder="Min. 8 characters" onChange={handleChange} value={SignUpFormData.password} />
                     </div>
                     <div className="mb-4">
-                        <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white" type="submit">Got It</button>
+                        <button className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white">Got It</button>
                     </div>
                     <div className="flex items-center">
                         <label htmlFor="KeepMeLoggedIn" className="text-gray-900">
