@@ -32,12 +32,12 @@ function App() {
             {location.pathname !== '/ForgetPasswordOTP' && <SideBar />}
             <div className={count === 1 ? "flex-1 overflow-hidden ml-64 px-10 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto px-10 h-screen max-h-full"} >
                 <Routes>
-                    <Route path="/" element={<SignIn />} />
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/events" element={<Events />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/logout" element={<Logout />} />
+                    <Route path="/sign-in" element={<SignIn />} />
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/sign-up2" element={<SignUp2 />} />
                     <Route path="/ForgetPassword" element={<ForgetPassword />} />
