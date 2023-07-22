@@ -10,7 +10,7 @@ export const Profile = () => {
             <LabelPage label={'Profile'} />
             <ProfileCard />
             </div>
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2 gap-10">
                 <Notifications/>
                 <GeneralInformations />
             </div>

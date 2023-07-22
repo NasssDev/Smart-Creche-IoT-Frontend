@@ -1,10 +1,9 @@
-import React from 'react';
+import {FormEvent} from 'react';
 import { Card, Input } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+
 
 const GeneralInformations = () => {
-    const handleSubmit = (event) => {
+    const handleSubmit = (event:FormEvent) => {
         event.preventDefault();
         // Handle form submission logic here
     };
@@ -43,7 +42,7 @@ const GeneralInformations = () => {
                         className="text-gray-700 rounded py-1 px-3"
                         id="grid-first-name"
                         type="text"
-                        placeholder="Adela"
+                        placeholder="Adel"
                     />
                 </div>
 
@@ -75,7 +74,7 @@ const GeneralInformations = () => {
                         className="text-gray-700 rounded py-1 px-3"
                         id="grid-positionheld"
                         type="text"
-                        placeholder="Directrice"
+                        placeholder="Director"
                     />
                 </div>
 
