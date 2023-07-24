@@ -1,6 +1,5 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
 
 import { Home } from "./pages/Home";
 import { SideBar } from "./components/SideBar.tsx";
@@ -18,19 +17,12 @@ import { ForgetPasswordChanged } from "./pages/ForgetPasswordChanged.tsx";
 import CopyrightNotice from "./components/CopyrightNotice.tsx";
 
 function App() {
-    const [count] = useState(1)
-    const location = useLocation();
+    // const [count] = useState(1)
 
     return <>
         <div className="flex flex-col">
-            {location.pathname !== '/sign-in' && <SideBar />}
-            {location.pathname !== '/sign-up' && <SideBar />}
-            {location.pathname !== '/sign-up2' && <SideBar />}
-            {location.pathname !== '/ForgetPassword' && <SideBar />}
-            {location.pathname !== '/ForgetPasswordChange' && <SideBar />}
-            {location.pathname !== '/ForgetPasswordChanged' && <SideBar />}
-            {location.pathname !== '/ForgetPasswordOTP' && <SideBar />}
-            <div className={count === 1 ? "flex-1 overflow-hidden ml-64 px-10 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto px-10 h-screen max-h-full"} >
+            {sessionStorage.token && <SideBar />}
+            <div className={sessionStorage.token ? "flex-1 overflow-hidden px-10 ml-64 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto h-screen max-h-full"} >
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
@@ -45,7 +37,7 @@ function App() {
                     <Route path="/ForgetPasswordChange" element={<ForgetPasswordChange />} />
                     <Route path="/ForgetPasswordChanged" element={<ForgetPasswordChanged />} />
                 </Routes>
-                <CopyrightNotice />
+                {sessionStorage.token && <CopyrightNotice/>}
             </div>
         </div>
     </>

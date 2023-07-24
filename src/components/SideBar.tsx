@@ -75,9 +75,11 @@ export const SideBar = () => {
                         <span
                             className={activeLink === "/profile" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Profile</span>
                     </Link>
-                    <Link
+                    <a
                         className={activeLink === "/logout" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
-                        to="/logout" onClick={() => setActiveLink("/logout")}>
+                        href="/sign-in" onClick={() => {
+                        sessionStorage.removeItem("token");
+                    }}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                              stroke="currentColor" className="w-5 h-5">
                             <g clipPath="url(#clip0_32_2951)">
@@ -92,7 +94,7 @@ export const SideBar = () => {
 
                         <span
                             className={activeLink === "/logout" ? "mx-2 text-sm font-bold" : "mx-2 text-sm font-medium"}>Logout</span>
-                    </Link>
+                    </a>
                 </nav>
             </div>
         </aside>
