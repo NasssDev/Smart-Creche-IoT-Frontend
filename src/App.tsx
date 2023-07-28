@@ -15,29 +15,34 @@ import { ForgetPasswordOTP } from "./pages/ForgetPasswordOTP.tsx";
 import { ForgetPasswordChange } from "./pages/ForgetPasswordChange.tsx";
 import { ForgetPasswordChanged } from "./pages/ForgetPasswordChanged.tsx";
 import CopyrightNotice from "./components/CopyrightNotice.tsx";
+import {useState} from "react";
 
 function App() {
-    // const [count] = useState(1)
+
+    const [isConnected, setIsConnected] = useState(sessionStorage.token != null)
+
+    const [isError, setIsError] = useState(false);
+
 
     return <>
         <div className="flex flex-col">
-            {sessionStorage.token && <SideBar />}
-            <div className={sessionStorage.token ? "flex-1 overflow-hidden px-10 ml-64 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto h-screen max-h-full"} >
+            {isConnected && <SideBar />}
+            <div className={isConnected ? "flex-1 overflow-hidden px-10 ml-64 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto h-screen max-h-full"} >
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/events" element={<Events />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/logout" element={<Logout />} />
-                    <Route path="/sign-in" element={<SignIn />} />
-                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/sign-in" element={<SignIn setIsConnected={setIsConnected} isError={isError} setIsError={setIsError}/>} />
+                    <Route path="/sign-up" element={<SignUp isError={isError} setIsError={setIsError}/>} />
                     <Route path="/sign-up2" element={<SignUp2 />} />
                     <Route path="/ForgetPassword" element={<ForgetPassword />} />
                     <Route path="/ForgetPasswordOTP" element={<ForgetPasswordOTP />} />
                     <Route path="/ForgetPasswordChange" element={<ForgetPasswordChange />} />
                     <Route path="/ForgetPasswordChanged" element={<ForgetPasswordChanged />} />
                 </Routes>
-                {sessionStorage.token && <CopyrightNotice/>}
+                {isConnected && <CopyrightNotice/>}
             </div>
         </div>
     </>

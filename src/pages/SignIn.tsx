@@ -1,11 +1,24 @@
 import {FormEvent, useState, ChangeEvent} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {API_URL} from "../constants/constants.tsx";
+import {ModalForVisitor} from "../components/ModalForVisitor.tsx";
+import {ErrorPop} from "../components/responsePopUp/ErrorPop.tsx";
 
 
-export const SignIn = () => {
+export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: React.Dispatch<React.SetStateAction<boolean>>,isError:boolean, setIsError:React.Dispatch<React.SetStateAction<boolean>>}) => {
 
     const navigateTo = useNavigate();
+    const [SignInFormData, setSignInFormData] = useState({email: '', password: '',});
+
+    const [isModalForVisitorOpen, setIsModalForVisitorOpen] = useState(false)
+
+    const handleOpenModal = () => {
+        setIsModalForVisitorOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsModalForVisitorOpen(false);
+    }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -19,18 +32,22 @@ export const SignIn = () => {
             .then(response => response.json())
             .then((data) => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                if (data.code !== 200) {
+                    setIsError(true);
+                }
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
                 if (data.payload && data.payload.token) {
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-unsafe-member-access
                     sessionStorage.setItem("token", data.payload.token);
+                    setIsConnected(true)
+                    navigateTo('/');
                 }
-                navigateTo('/');
             })
             .catch(error => {
                 console.error('Error', error);
             });
     };
 
-    const [SignInFormData, setSignInFormData] = useState({email: '', password: '',});
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setSignInFormData(prevState => {
@@ -40,13 +57,20 @@ export const SignIn = () => {
                 }
             }
         );
-    };
+    }
 
     return (
         <>
+            <button
+                type="button"
+                className="inline-block fixed mt-12 rounded-br-xl rounded-tr-xl bg-yellow-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
+                onClick={handleOpenModal}
+            >
+                For test
+            </button>
             <div className="flex justify-center items-center h-screen">
                 <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
-                    <div className="mb-4 text-40">
+                    <div className="mb-4 text-40 text-crech-blue font-semibold">
                         Sign In
                     </div>
                     <div className="mb-4 text-gray-500">
@@ -55,14 +79,14 @@ export const SignIn = () => {
                     <div className="mb-4">
                         <label className="text-black" htmlFor="email">Email*</label>
                         <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10"
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:border-blue-500 focus:shadow-outline h-10"
                             id="email" type="text" name="email" placeholder="username@example.com"
                             onChange={handleChange} value={SignInFormData.email}/>
                     </div>
                     <div className="mb-4">
                         <label className="text-black" htmlFor="password">Password*</label>
                         <input
-                            className="appearance-none border rounded w-full py-2 px-3 text-gray-400 focus:outline-none focus:shadow-outline h-10"
+                            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline h-10"
                             id="password" type="password" name="password" placeholder="Min. 8 characters"
                             onChange={handleChange} value={SignInFormData.password}/>
                     </div>
@@ -76,7 +100,7 @@ export const SignIn = () => {
                             </label>
                         </div>
                         {/* <Link to="/forget-password" className="text-crech-blue">Forget password?</Link> */}
-                        <Link to="/sign-in" className="text-crech-blue">Forget password?</Link>
+                        <Link to="/sign-in" className="text-crech-blue font-semibold">Forget password?</Link>
                     </div>
                     <div className="mb-4">
                         <button
@@ -88,7 +112,7 @@ export const SignIn = () => {
                         <label htmlFor="KeepMeLoggedIn" className="text-gray">
                             Not registered yet?
                         </label>
-                        <Link to="/sign-up" className="text-crech-blue">Create an Account</Link>
+                        <Link to="/sign-up" className="ml-2 font-semibold text-crech-blue">Create an Account</Link>
                     </div>
                     <footer className="mb-4 flex justify-center items-center absolute bottom-0">
                         <div className="text-gray-400">
@@ -123,6 +147,8 @@ export const SignIn = () => {
                     </div>
                 </div>
             </div>
+            {isModalForVisitorOpen && <ModalForVisitor onClose={handleCloseModal}/>}
+            {isError && <ErrorPop message="An error occured during sign in!"/>}
         </>
     )
 }
