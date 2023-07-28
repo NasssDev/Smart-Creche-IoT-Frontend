@@ -66,7 +66,7 @@ export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: Reac
                 className="inline-block fixed mt-12 rounded-br-xl rounded-tr-xl bg-yellow-500 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]"
                 onClick={handleOpenModal}
             >
-                For test
+                Click for test
             </button>
             <div className="flex justify-center items-center h-screen">
                 <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
