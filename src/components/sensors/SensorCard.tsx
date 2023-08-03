@@ -6,6 +6,7 @@ import {SensorCardCol2} from "./SensorCardCol2.tsx";
 import {NepTab} from "../NepTab.tsx";
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../constants/constants.tsx';
+import Thermometer from "../Yaya.tsx";
 
 export const SensorCard = () => {
     const equiObj: any = {
@@ -14,31 +15,31 @@ export const SensorCard = () => {
         "Temperature": {sensor_id: "112", high: 70, low: 0, value: 0, unit:"C"},
         "Humidity": {sensor_id: "114", high: 100, low: 0, value: 0, unit:"%"}
     };
-    const [data1, setdata1] = useState<any>();
-    const [data2, setdata2] = useState<any>();
-    const [data3, setdata3] = useState<any>();
-    const [data4, setdata4] = useState<any>();
-    const fetchData = (url: string): any => {
-        // new Promise((resolve, reject) => {
-            fetch(API_URL+ url, {
-                method: 'GET',
-                headers: new Headers({
-                  "Content-type": "application/x-www-form-urlencoded",
-                })
-              })
-                .then(response => response.json()).then(data => {
-                    console.log(data.payload);
-                    return data.payload;
-                    // setEvents(data.payload);
-                })
-                .catch(error => {
-                    throw error;
-                });
-
-    }
-    fetchData('');
-    useEffect(() => { 
-        fetch(API_URL+ "/sensor_val_avg/131", {
+    const [data1, setdata1] = useState();
+    const [data2, setdata2] = useState();
+    const [data3, setdata3] = useState();
+    const [data4, setdata4] = useState();
+    // const fetchData = (url: string): any => {
+    //     // new Promise((resolve, reject) => {
+    //         fetch(API_URL+ url, {
+    //             method: 'GET',
+    //             headers: new Headers({
+    //               "Content-type": "application/x-www-form-urlencoded",
+    //             })
+    //           })
+    //             .then(response => response.json()).then(data => {
+    //                 console.log(data.payload);
+    //                 return data.payload;
+    //                 // setEvents(data.payload);
+    //             })
+    //             .catch(error => {
+    //                 throw error;
+    //             });
+    //
+    // }
+    // fetchData('');
+    useEffect(() => {
+         fetch(API_URL+ "/sensor_val_avg/131", {
             method: 'GET',
             headers: new Headers({
               "Content-type": "application/x-www-form-urlencoded",
@@ -76,6 +77,7 @@ export const SensorCard = () => {
                                   })
                                     .then(response => response.json()).then(data => {
                                         let obj4= equiObj["Brightness"];
+                                        console.log(JSON.stringify(data))
                                         obj4.value = Number(data.payload.average.toFixed(2));
                                         setdata4(obj4);
                                         // setEvents(data.payload);
@@ -88,7 +90,7 @@ export const SensorCard = () => {
             })
 
         // fetch(API_URL+"/api/sensor_val_avg/131")
-    }, [])
+    }, [equiObj])
 
 
     // switch (label) {
@@ -109,7 +111,7 @@ export const SensorCard = () => {
     //     default:
     //         componentToRender = (<div className="relative h-full">
     //             <div className="flex absolute top-0 left-0 h-3/4 w-full justify-center items-center">
-    //                 <ErrorPop message="An error occured"/></div>
+    //                 <ErrorPop message="An error occurred"/></div>
     //         </div>)
     // }
 
@@ -117,7 +119,7 @@ export const SensorCard = () => {
         <>
             <SensorCardCol1 label={"CO2"} componentChild={<Gauge toggled={false} labelForSiesteTabOnly={"CO2"} info={data1}/>} />
             <SensorCardCol1 label={"Humidity"} componentChild={<Brightness toggled={false} labelForSiesteTabOnly={"Humidity"} info={data2}/>} />
-            <SensorCardCol1 label={"Temperature"} componentChild={<Gauge toggled={false} labelForSiesteTabOnly={"Temperature"} info={data3}/>} />
+            <SensorCardCol1 label={"Temperature"} componentChild={<Thermometer maxTemperature={40} minTemperature={0} temperature={26}/>} />
             <SensorCardCol2 label={"Water Leak"} />
             <SensorCardCol1 label={"Brightness"} componentChild={<Gauge toggled={false} labelForSiesteTabOnly={"Brightness"} info={data4}/>} />
             <NepTab label={"Nap"}/>
