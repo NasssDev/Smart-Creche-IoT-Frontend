@@ -2,16 +2,18 @@ import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 export const SideBar = () => {
-    const [activeLink, setActiveLink] = useState<string>("/");
+    const [activeLink, setActiveLink] = useState<string>(localStorage.getItem("activeLink") || "/");
 
     useEffect(() => {
         const storedActivLink = localStorage.getItem("activeLink");
         if (storedActivLink) {
+            console.log("activeLink ", storedActivLink)
             setActiveLink(storedActivLink);
         }
     }, []);
 
     useEffect(() => {
+        console.log("EFFECT",activeLink);
         localStorage.setItem("activeLink", activeLink);
     }, [activeLink]);
 
@@ -79,7 +81,7 @@ export const SideBar = () => {
                         className={activeLink === "/logout" ? "flex items-center px-3 py-2 transition-colors duration-300 transform rounded-lg hover:text-blue-700 text-blue-900 link-side-bar-active font-bold" : "link-side-bar"}
                         href="/sign-in" onClick={() => {
                         sessionStorage.removeItem("token");
-                        sessionStorage.removeItem("activeLink");
+                        localStorage.removeItem("activeLink");
                     }}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                              stroke="currentColor" className="w-5 h-5">
