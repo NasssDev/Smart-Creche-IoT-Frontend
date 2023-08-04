@@ -1,12 +1,13 @@
 import * as echarts from 'echarts';
 import {useEffect, useRef} from "react";
+import {EquiObjItem} from "./SensorCard.tsx";
 
 type EChartsOption = echarts.EChartsOption;
 
-export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:any|{}}) => {
+export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:EquiObjItem}) => {
     const chartRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        console.log("inside chart",info);
+        console.log("GAUGE ",info);
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
         let option:EChartsOption = {};
 
@@ -49,7 +50,7 @@ export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabO
                     axisLabel: {
                         color: 'inherit',
                         distance: 20,
-                        fontSize: '2vw'
+                        fontSize: 9
                     },
                     detail: {
                         valueAnimation: true,
@@ -68,20 +69,6 @@ export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabO
             ]
         };
 
-            myChart.setOption<echarts.EChartsOption>({
-                series: [
-                    {
-                      
-                        data: [
-                            {
-
-                                value: info?.value?.toFixed(2)
-                            }
-                        ]
-                    }
-                ]
-            });
-
         option && myChart.setOption(option);
 
         const handleWindowResize = () => {
@@ -94,7 +81,7 @@ export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabO
             window.removeEventListener("resize", handleWindowResize);
             myChart.dispose();
         };
-    }, [info]);
+    }, [info, toggled]);
 
-    return <div><span className={`absolute ${toggled ? "text-gray-500" : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
+    return <div><span className={`absolute ${toggled ? "text-gray-200" : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
 }

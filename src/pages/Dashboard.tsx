@@ -7,7 +7,7 @@ export const Dashboard = () => {
             <LabelPage label={"Dashboard"}/>
             <div id="main" className="grid gap-10 grid-cols-3 mt-10">
                 {
-                    // ["CO2", "Humidity", "Temperature", "Water Leak Detection", "Brightness", "Last nep"].map((elem,index) => (
+                    // ["CO2", "Humidity", "Temperature", "Water Leak Detection", "Humidity", "Last nep"].map((elem,index) => (
                         <SensorCard/>
                     // ))
                 }

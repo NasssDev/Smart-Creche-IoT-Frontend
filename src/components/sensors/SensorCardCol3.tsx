@@ -1,5 +1,5 @@
 import {Gauge} from "./Gauge.tsx";
-import {Brightness} from "./Brightness.tsx";
+import {Humidity} from "./Humidity.tsx";
 import {SensorCardCol2} from "./SensorCardCol2.tsx";
 import {ErrorPop} from "../responsePopUp/ErrorPop.tsx";
 import {ReactNode, useEffect, useState} from "react";
@@ -26,7 +26,7 @@ export const SensorCardCol3 = ({ label, toggled, chartData }: { label: string, t
                         setComponentToRender(<Gauge toggled={toggled} labelForSiesteTabOnly={label} info={dataObj} />);
                         break;
                     case 'Humidity':
-                    setComponentToRender(<Brightness toggled={toggled} labelForSiesteTabOnly={label} info={{}} />);
+                    setComponentToRender(<Humidity toggled={toggled} labelForSiesteTabOnly={label} info={{}} />);
                         break;
                     case 'Water Leak Detection':
                         setComponentToRender(<SensorCardCol2 label={""}/>);

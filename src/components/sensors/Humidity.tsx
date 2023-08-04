@@ -1,7 +1,13 @@
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
+import {EquiObjItem} from "./SensorCard.tsx";
 
-export const Brightness = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean|null, info:any}) => {
+interface Formatter {
+    name: string,
+    value: string|number
+}
+
+export const Humidity = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:EquiObjItem}) => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -21,13 +27,13 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled, info}:{labe
                     startAngle: 196,
                     label: {
                         show: false,
-                        formatter(params:any) {
-                            return params.name === 'hidden' ? '' : params.name + ' (' + params.value + '%)';
+                        formatter(params:Formatter) {
+                            return params.name === 'hidden' ? '' : params.name + ' (' + params.value.toString() + '%)';
                         },
                     },
                     data: [
-                        { value: info?.value, name: 'Brightness', itemStyle: {color:'lightblue'} },
-                        { value: 100 -info?.value, name: 'Darkness', itemStyle: {color:'orange'}},
+                        { value: info?.value, name: 'Humidity', itemStyle: {color:'lightblue'} },
+                        { value: 100 - info?.value, name: 'Drought', itemStyle: {color:'brown'}},
                         {
                             value: 70,
                             name:'brightness',
@@ -50,7 +56,7 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled, info}:{labe
                     left: 'center',
                     top: '85%',
                     style: {
-                        text: 'okok',
+                        text: 'The Humidity is at '+info?.value.toString()+' '+info?.unit,
                         textAlign: 'center',
                         fill: toggled ? 'grey' : 'grey',
                     },
@@ -60,25 +66,22 @@ export const Brightness = ({labelForSiesteTabOnly, toggled: toggled, info}:{labe
                     left: 'center',
                     top: '70%',
                     style: {
-                        text: Number(info?.value)+' '+info?.unit,
+                        text: info?.value.toString()+' '+info?.unit,
                         textAlign: 'center',
-                        fill: toggled ? 'grey' : 'grey',
+                        fill: toggled ? 'white' : 'grey',
                         font: 'bolder 1.5em sans-serif'
                     },
                 },
             ],
         };
 
-
-
-
         myChart.setOption(option);
 
         return () => {
             myChart.dispose();
         };
-    }, []);
+    }, [info,toggled]);
 
-    return <div><span className={`absolute ${toggled ? " text-gray-500 " : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="h-64"></div></div>;
+    return <div><span className={`absolute ${toggled ? " text-gray-200 " : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="h-64"></div></div>;
 
 };

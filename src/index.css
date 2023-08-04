@@ -263,7 +263,7 @@
 /*  *   *   * THERMOMETRE *   *   *  */
 
 .ant-slider-rail {
-    background: linear-gradient(to top, green, yellow,orange,red);
+    background: linear-gradient(to top, cyan,deepskyblue, green, yellow, orange, red);
 }
 
 .ant-slider-track {
