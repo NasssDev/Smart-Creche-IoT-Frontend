@@ -19,7 +19,7 @@ export const NapTab = ({label}: { label: string }) => {
         [key: string]: EquiObjItem;
     }
 
-    const [dataObj, setDataObj] = useState<DataObj>({
+    const [dataObj] = useState<DataObj>({
         CO2: {sensor_id: "131", high: 800, low: 0, value: 390, unit: "PPM"},
         Brightness: {sensor_id: "118", high: 3000, low: 0, value: 300, unit: "LUX"},
         Temperature: {sensor_id: "112", high: 40, low: 0, value: 21, unit: "C"},
