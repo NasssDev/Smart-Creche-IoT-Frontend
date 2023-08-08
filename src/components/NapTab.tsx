@@ -4,41 +4,41 @@ import Toggle from "./toggle/Toggle.tsx";
 import {Gauge} from "./sensors/Gauge.tsx";
 import {Humidity} from "./sensors/Humidity.tsx";
 import DegreeBar from "./sensors/DegreeBar.tsx";
+import {SensorI} from "./InteractivePlan.tsx";
 
 export const NapTab = ({label}: { label: string }) => {
 
-    interface EquiObjItem {
-        sensor_id: string;
-        high: number;
-        low: number;
-        value: number;
-        unit: string;
-    }
-
-    interface DataObj {
-        [key: string]: EquiObjItem;
-    }
-
-    const [dataObj] = useState<DataObj>({
-        CO2: {sensor_id: "131", high: 800, low: 0, value: 390, unit: "PPM"},
-        Brightness: {sensor_id: "118", high: 3000, low: 0, value: 300, unit: "LUX"},
-        Temperature: {sensor_id: "112", high: 40, low: 0, value: 21, unit: "C"},
-        Humidity: {sensor_id: "114", high: 100, low: 0, value: 55, unit: "%"},
-    });
-
     const [lastNep, setLastNep] = useState("");
     const [toggled, setToggled] = useState(false);
+
+    const [dataObj, setDataObj] = useState<SensorI>({
+        CO2: {sensor_name: "CO2",sensor_id: "131", high: 800, low: 0, values: [{value: 490}], sensor_unit: "PPM"},
+        Brightness: {sensor_name: "Brightness",sensor_id: "118", high: 3000, low: 0,values: [{ value: 2173}], sensor_unit: "LUX"},
+        Temperature: {sensor_name: "Temperature",sensor_id: "112", high: 40, low: 0,values: [{ value: 19}], sensor_unit: "C"},
+        Humidity: {sensor_name: "Humidity",sensor_id: "114", high: 100, low: 0,values: [{ value: 57}], sensor_unit: "%"},
+    });
 
     useEffect(() => {
         sessionStorage.toggled && setToggled(sessionStorage.toggled === "true");
     }, []);
 
-
     const handleClick = () => {
         if (!toggled) {
             sessionStorage.setItem("toggleStartDate", moment().format("DD MMMM")+" at "+moment().format("HH:mm"));
             sessionStorage.removeItem("toggled");
+            setDataObj(current => ({
+                ...current,
+                'Brightness' : {...current.Brightness, values :[{value: 300}]},
+                'Temperature' : {...current.Temperature, values :[{value: 21}]},
+                'Humidity' : {...current.Humidity, values :[{value: 45}]},
+            }))
         } else {
+            setDataObj(current => ({
+                ...current,
+                'Brightness' : {...current.Brightness, values :[{value: 2173}]},
+                'Temperature' : {...current.Temperature, values :[{value: 19}]},
+                'Humidity' : {...current.Humidity, values :[{value: 57}]},
+            }))
             sessionStorage.setItem("toggleEndDate", moment().format("HH:mm"));
         }
         sessionStorage.setItem("toggled", (!toggled).toString());
@@ -52,7 +52,7 @@ export const NapTab = ({label}: { label: string }) => {
                 setLastNep(toggleStartDate + " until " + toggleEndDate);
             }
         }
-        , [toggled]
+        ,[toggled]
     );
 
     return (
@@ -70,7 +70,7 @@ export const NapTab = ({label}: { label: string }) => {
                 className={`w-full grid grid-cols-4 p-4 overflow-hidden rounded-2xl ${toggled ? "bg-transparent" : ""}`}>
                 <Gauge toggled={toggled} labelForSiesteTabOnly={"CO2"} info={dataObj.CO2}/>
                 <Humidity toggled={toggled} labelForSiesteTabOnly={"Humidity"} info={dataObj.Humidity}/>
-                <DegreeBar toggled={toggled} labelForSiesteTabOnly={"Temperature"} maxTemperature={dataObj.Temperature.high} minTemperature={dataObj.Temperature.low} temperature={dataObj.Temperature.value} />
+                <DegreeBar toggled={toggled} labelForSiesteTabOnly={"Temperature"} maxTemperature={dataObj.Temperature.high} minTemperature={dataObj.Temperature.low} temperature={dataObj?.Temperature?.values[0]?.value} />
                 <Gauge toggled={toggled} labelForSiesteTabOnly={"Brightness"} info={dataObj.Brightness}/>
             </div>
         </div>

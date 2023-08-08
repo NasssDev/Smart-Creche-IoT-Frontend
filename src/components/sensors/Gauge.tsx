@@ -1,13 +1,15 @@
 import * as echarts from 'echarts';
 import {useEffect, useRef} from "react";
-import {EquiObjItem} from "./SensorCard.tsx";
+import {SensorsData} from "../InteractivePlan.tsx";
 
 type EChartsOption = echarts.EChartsOption;
 
-export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:EquiObjItem}) => {
+export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:SensorsData}) => {
     const chartRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        console.log("GAUGE ",info);
+        console.log("DASHBOARD BUGGGG ",info);
+        const infoValues  = info?.values[0];
+
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
         let option:EChartsOption = {};
 
@@ -54,13 +56,13 @@ export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabO
                     },
                     detail: {
                         valueAnimation: true,
-                        formatter: '{value} '+info?.unit,
+                        formatter: '{value} '+String(info?.sensor_unit),
                         color: 'inherit',
                         fontSize:'10vw'
                     },
                     data: [
                         {
-                            value: info?.value,
+                            value: infoValues?.value,
                         }
                     ],
                     max: info?.high,
@@ -83,5 +85,5 @@ export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabO
         };
     }, [info, toggled]);
 
-    return <div><span className={`absolute ${toggled ? "text-gray-200" : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
+    return <div className="relative"><span className={`absolute left-0 ${toggled ? "text-gray-200" : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="w-full h-64 border-black rounded-2xl"></div></div>;
 }

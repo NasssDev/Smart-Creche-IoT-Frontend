@@ -26,7 +26,7 @@ const DegreeBar = ({temperature, minTemperature, maxTemperature, labelForSiesteT
 
     return (
         <div>
-            <div><span className={`absolute ${toggled ? "text-gray-200" : "text-gray-500"} `}>{labelForSiesteTabOnly}</span></div>
+            <div className="relative" ><span className={`absolute top-0 left-0 ${toggled ? "text-gray-200" : "text-gray-500"} `}>{labelForSiesteTabOnly}</span></div>
             <div style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -40,7 +40,7 @@ const DegreeBar = ({temperature, minTemperature, maxTemperature, labelForSiesteT
                     type="circle"
                     percent={fillPercentage}
                     strokeColor={getTemperatureColor(currentTemperature)}
-                    format={() => `${currentTemperature}°C`}
+                    format={() => `${currentTemperature.toFixed(1)}°C`}
                     size={120}
                     strokeWidth={10}
                     style={{marginTop: '5px'}}

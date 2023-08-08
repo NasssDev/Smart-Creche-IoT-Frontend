@@ -5,26 +5,16 @@ import {SensorCardCol1} from "./SensorCardCol1.tsx";
 import {SensorCardCol2} from "./SensorCardCol2.tsx";
 import {NapTab} from "../NapTab.tsx";
 import DegreeBar from "./DegreeBar.tsx";
-
-export interface EquiObjItem {
-    sensor_id: string;
-    high: number;
-    low: number;
-    value: number;
-    unit: string;
-}
-
-export interface EquiObj {
-    [key: string]: EquiObjItem;
-}
+// import type { EquiObj } from "../../types/Sensors";
+import {SensorI} from "../InteractivePlan.tsx";
 
 export const SensorCard = () => {
 
-    const equiObj: EquiObj = {
-        "CO2": {sensor_id: "131", high: 800, low: 0, value: 486, unit:"PPM"},
-        "Brightness": {sensor_id: "118", high: 3000, low: 0, value: 1776, unit:"LUX"},
-        "Temperature": {sensor_id: "112", high: 40, low: 0, value: 19, unit:"C"},
-        "Humidity": {sensor_id: "114", high: 100, low: 0, value: 61, unit:"%"}
+    const equiObj: SensorI = {
+        "CO2": {sensor_name: "CO2",sensor_id: "131", high: 800, low: 0, values : [{value: 486}], sensor_unit:"PPM"},
+        "Brightness": {sensor_name: "Brightness",sensor_id: "118", high: 3000, low: 0,values : [{ value: 1776}], sensor_unit:"LUX"},
+        "Temperature": {sensor_name: "Temperature",sensor_id: "112", high: 40, low: 0,values : [{ value: 19}], sensor_unit:"C"},
+        "Humidity": {sensor_name: "Humidity",sensor_id: "114", high: 100, low: 0,values : [{ value: 61}], sensor_unit:"%"}
     };
 
     // Le switch utilisé quand on avait le broker MQTT à disposition
@@ -54,7 +44,7 @@ export const SensorCard = () => {
         <>
             <SensorCardCol1 label={"CO2"} componentChild={<Gauge toggled={false} labelForSiesteTabOnly={""} info={equiObj.CO2}/>} />
             <SensorCardCol1 label={"Humidity"} componentChild={<Humidity toggled={false} labelForSiesteTabOnly={""} info={equiObj.Humidity}/>} />
-            <SensorCardCol1 label={"Temperature"} componentChild={<DegreeBar labelForSiesteTabOnly={""} maxTemperature={equiObj.Temperature.high} minTemperature={equiObj.Temperature.low} temperature={equiObj.Temperature.value}/>} />
+            <SensorCardCol1 label={"Temperature"} componentChild={<DegreeBar labelForSiesteTabOnly={""} maxTemperature={equiObj.Temperature.high} minTemperature={equiObj.Temperature.low} temperature={equiObj?.Temperature?.values[0]?.value}/>} />
             <SensorCardCol2 label={"Water Leak"} />
             <SensorCardCol1 label={"Brightness"} componentChild={<Gauge toggled={false} labelForSiesteTabOnly={""} info={equiObj.Brightness}/>} />
             <NapTab label={"Nap"}/>

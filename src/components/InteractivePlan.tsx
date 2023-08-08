@@ -5,24 +5,54 @@ import {TreemapSeriesNodeItemOption} from "echarts/types/src/chart/treemap/Treem
 import {API_URL} from "../constants/constants.tsx";
 import {ErrorPop} from "./responsePopUp/ErrorPop.tsx";
 import {Modal} from "./Modal.tsx";
+import {ECElementEvent} from 'echarts/types/dist/echarts';
+
+
+interface CustomOption extends TreemapSeriesNodeItemOption {
+    sensor_id: number,
+    name: string,
+    id: string | number,
+    high: number,
+    low: number
+}
+
+interface ApiResponse {
+    status: number;
+    message: string;
+    payload: SensorsData[]
+}
+
+export interface SensorI {
+    [key: string]: SensorsData;
+}
+
+export interface SensorsData {
+    location?: string,
+    sensor_id?: string | number,
+    sensor_name: string,
+    sensor_unit?: string,
+    high: number,
+    low: number,
+    values: SensorValues[]
+}
+
+export interface SensorValues {
+    value: number,
+    name?: string
+}
+
 
 export const InteractivePlan = () => {
 
     const chartRef = useRef<HTMLDivElement>(null);
 
-    interface SensorI {
-        sensorsData: string | number[];
-    }
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const [sensorsData, setSensorsData] = useState<SensorI[]>([])
+    const [sensorsData, setSensorsData] = useState<SensorI>({})
 
     const [isDataLoaded, setIsDataLoaded] = useState(false);
 
-    interface CustomOption extends TreemapSeriesNodeItemOption {
-        sensor_id: number,
-    }
 
     useEffect(() => {
         const myChart = echarts.init(chartRef.current as HTMLDivElement);
@@ -71,38 +101,45 @@ export const InteractivePlan = () => {
                 }
             ]
         }
-        ;
 
         option && myChart.setOption(option);
 
-        const handleChartClick = (params: any) => {
-            if (params.data && params.data.id) {
-                console.log('La donnée cliquée :', params.data.name);
-                fetch(API_URL + "/sensors/" + params.data.id,)
-                    .then(data => data.json())
-                    .then((json) => {
-                        if (json.status !== 200) {
-                            return <ErrorPop message={json.message}/>
-                        }
-                        // console.log("je passe")
-                        const idRoom = params.data.id
-
-                        if (json.payload[0].location === idRoom) {
-                            setSensorsData(json.payload)
-                        }
-
-                        setSensorsData(current => {
-                            console.log("STATE", current)
-                            return current;
-                        })
-
-                        setIsDataLoaded(true)
-
-                        setIsModalOpen(true)
-
-                    })
-                    .catch((error) => console.log('Erreur Request:', error))
+        const handleChartClick = (params: ECElementEvent) => {
+            const dataRoom = params?.data as CustomOption;
+            if (!dataRoom.id) {
+                console.error("Donnée non valide !");
+                return;
             }
+            // console.log('La donnée cliqué :', dataRoom.name);
+            fetch(API_URL + "/sensors/" + String(dataRoom.id),)
+                .then(data => data.json())
+                .then((json: ApiResponse) => {
+                    const dataPayload = json?.payload;
+                    if (json.status !== 200) {
+                        return <ErrorPop message={json.message}/>
+                    }
+                    const associativePayloadArray: {
+                        [key: string]: SensorsData
+                    } = dataPayload.reduce((acc: SensorI, obj) => {
+                        acc[obj.sensor_name] = obj;
+                        return acc;
+                    }, {});
+
+                    // console.log('ASSO ARRAY : ', associativePayloadArray);
+
+                    setSensorsData(associativePayloadArray);
+
+                    setSensorsData(current => {
+                        // console.log("STATE", current[0])
+                        return current;
+                    })
+
+                    setIsDataLoaded(true)
+
+                    setIsModalOpen(true)
+
+                })
+                .catch((error) => console.log('Erreur Request:', error))
         };
 
         myChart.on('click', handleChartClick);

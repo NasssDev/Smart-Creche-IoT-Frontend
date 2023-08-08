@@ -1,13 +1,13 @@
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
-import {EquiObjItem} from "./SensorCard.tsx";
+import { SensorsData} from "../InteractivePlan.tsx";
 
 interface Formatter {
     name: string,
     value: string|number
 }
 
-export const Humidity = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:EquiObjItem}) => {
+export const Humidity = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:SensorsData}) => {
     const chartRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -32,8 +32,8 @@ export const Humidity = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelF
                         },
                     },
                     data: [
-                        { value: info?.value, name: 'Humidity', itemStyle: {color:'lightblue'} },
-                        { value: 100 - info?.value, name: 'Drought', itemStyle: {color:'brown'}},
+                        { value: info?.values[0]?.value, name: 'Humidity', itemStyle: {color:'lightblue'} },
+                        { value: 100 - info?.values[0]?.value, name: 'Drought', itemStyle: {color:'brown'}},
                         {
                             value: 70,
                             name:'brightness',
@@ -56,7 +56,7 @@ export const Humidity = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelF
                     left: 'center',
                     top: '85%',
                     style: {
-                        text: 'The Humidity is at '+info?.value.toString()+' '+info?.unit,
+                        text: 'The Humidity is at '+info?.values[0]?.value.toString()+' '+String(info?.sensor_unit),
                         textAlign: 'center',
                         fill: toggled ? 'grey' : 'grey',
                     },
@@ -66,7 +66,7 @@ export const Humidity = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelF
                     left: 'center',
                     top: '70%',
                     style: {
-                        text: info?.value.toString()+' '+info?.unit,
+                        text: info?.values[0]?.value.toString()+' '+String(info?.sensor_unit),
                         textAlign: 'center',
                         fill: toggled ? 'white' : 'grey',
                         font: 'bolder 1.5em sans-serif'
@@ -77,11 +77,18 @@ export const Humidity = ({labelForSiesteTabOnly, toggled: toggled, info}:{labelF
 
         myChart.setOption(option);
 
+        const handleWindowResize = () => {
+            myChart.resize();
+        };
+
+        window.addEventListener("resize", handleWindowResize);
+
         return () => {
+            window.removeEventListener("resize", handleWindowResize);
             myChart.dispose();
         };
     }, [info,toggled]);
 
-    return <div><span className={`absolute ${toggled ? " text-gray-200 " : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="h-64"></div></div>;
+    return <div className="relative"><span className={`absolute left-0 ${toggled ? " text-gray-200 " : "text-gray-500"}`}>{labelForSiesteTabOnly}</span><div ref={chartRef} className="h-64"></div></div>;
 
 };

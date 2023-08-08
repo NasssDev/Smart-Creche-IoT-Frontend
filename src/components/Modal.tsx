@@ -1,26 +1,17 @@
-import {useEffect} from "react";
-// import {SensorCardCol3} from "./sensors/SensorCardCol3.tsx";
+import {SensorI} from "./InteractivePlan.tsx";
+import {SensorCardCol3} from "./sensors/SensorCardCol3.tsx";
 
 export const Modal = ({isModalOpen, setIsModalOpen, sensorsData}: {
     isModalOpen: boolean,
-    setIsModalOpen: any,
-    sensorsData: any[]
+    setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
+    sensorsData: SensorI
 }) => {
-console.log(sensorsData);
     const closeModal = () => {
         setIsModalOpen(false);
     };
 
-    useEffect(() => {
-        if (isModalOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-    }, [isModalOpen]);
-
     return (
-        <div className="relative flex justify-center w-screen">
+        <>
             {isModalOpen && (
                 <div
                     className="fixed inset-0 z-10 overflow-y-auto"
@@ -35,12 +26,12 @@ console.log(sensorsData);
 
                         <div className="fixed inset-0 flex items-center justify-center z-10 overflow-y-auto">
                             <div className="relative p-10 w-3/4 max-w-3/4 max-h-96 overflow-y-auto bg-white rounded-lg shadow-2xl">
-                                <div className="grid grid-cols-4 gap-6">
-                                        {/*{sensorsData.map((elem,index) => {*/}
-                                        {/*    return <SensorCardCol3 key={index} label={elem.sensor_name} toggled={false} sensorsData={[""]}/>*/}
-                                        {/*})}*/}
+                                <div className={`grid grid-cols-4 gap-10 justify-center items-center`}>
+                                        {!!sensorsData && Object.keys(sensorsData).map((key,index) => {
+                                            const elem = sensorsData[key];
+                                            return <SensorCardCol3 key={index} label={elem.sensor_name} toggled={false} chartData={elem}/>
+                                        })}
                                 </div>
-
                                 <div className="w-full mt-4 sm:mt-6 sm:-mx-2">
                                     <button
                                         onClick={closeModal}
@@ -54,6 +45,6 @@ console.log(sensorsData);
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 }
