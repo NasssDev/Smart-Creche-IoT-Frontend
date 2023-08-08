@@ -2,6 +2,7 @@ import { Switch, Card } from 'antd';
 
 const SwitchComponent = () => {
     const handleSwitchChange = (checked: boolean, text: string) => {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         console.log(`Switch for ${text} is ${checked}`);
     };
 
@@ -25,7 +26,7 @@ const SwitchComponent = () => {
                     <Switch
                         className={"back"}
                         defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 1')}
+                        onChange={(checked) => handleSwitchChange(checked, 'action 1')}
                     />
                     <span className="text-2xl ml-2">Movement Detection</span>
                 </div>
@@ -33,7 +34,7 @@ const SwitchComponent = () => {
                 <div className="flex items-center">
                     <Switch
                         defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 2')}
+                        onChange={(checked) => handleSwitchChange(checked, 'action 2')}
                     />
                     <span className="text-2xl ml-2">Temperature Alert</span>
                 </div>
@@ -41,7 +42,7 @@ const SwitchComponent = () => {
                 <div className="flex items-center">
                     <Switch
                         defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 3')}
+                        onChange={(checked) => handleSwitchChange(checked, 'action 3')}
                     />
                     <span className="text-2xl ml-2">CO2 Alert</span>
                 </div>
@@ -49,7 +50,7 @@ const SwitchComponent = () => {
                 <div className="flex items-center">
                     <Switch
                         defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 4')}
+                        onChange={(checked) => handleSwitchChange(checked, 'action 4')}
                     />
                     <span className="text-2xl ml-2">Humidity Alert</span>
                 </div>
@@ -57,7 +58,7 @@ const SwitchComponent = () => {
                 <div className="flex items-center">
                     <Switch
                         defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 5')}
+                        onChange={(checked) => handleSwitchChange(checked, 'action 5')}
                     />
                     <span className="text-2xl ml-2">High Noise Alert</span>
                 </div>
@@ -65,7 +66,7 @@ const SwitchComponent = () => {
                 <div className="flex items-center">
                     <Switch
                         defaultChecked={true}
-                        onChange={(checked) => handleSwitchChange(checked, 'Text 6')}
+                        onChange={(checked) => handleSwitchChange(checked, 'action 6')}
                     />
                     <span className="text-2xl ml-2">Water Leak Alert</span>
                 </div>

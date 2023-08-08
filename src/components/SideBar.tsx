@@ -7,13 +7,11 @@ export const SideBar = () => {
     useEffect(() => {
         const storedActivLink = localStorage.getItem("activeLink");
         if (storedActivLink) {
-            console.log("activeLink ", storedActivLink)
             setActiveLink(storedActivLink);
         }
     }, []);
 
     useEffect(() => {
-        console.log("EFFECT",activeLink);
         localStorage.setItem("activeLink", activeLink);
     }, [activeLink]);
 

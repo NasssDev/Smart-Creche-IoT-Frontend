@@ -7,7 +7,6 @@ type EChartsOption = echarts.EChartsOption;
 export const Gauge = ({labelForSiesteTabOnly, toggled, info}:{labelForSiesteTabOnly:string|null, toggled:boolean, info:SensorsData}) => {
     const chartRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
-        console.log("DASHBOARD BUGGGG ",info);
         const infoValues  = info?.values[0];
 
         const myChart = echarts.init(chartRef.current as HTMLDivElement);

@@ -3,7 +3,6 @@ import * as echarts from 'echarts';
 import {EChartsOption} from "echarts";
 import {TreemapSeriesNodeItemOption} from "echarts/types/src/chart/treemap/TreemapSeries";
 import {API_URL} from "../constants/constants.tsx";
-import {ErrorPop} from "./responsePopUp/ErrorPop.tsx";
 import {Modal} from "./Modal.tsx";
 import {ECElementEvent} from 'echarts/types/dist/echarts';
 
@@ -63,7 +62,7 @@ export const InteractivePlan = () => {
             series: [
                 {
                     type: 'treemap',
-                    roam: 'move',
+                    roam: false,
                     itemStyle: {
                         borderRadius: 10,
                         gapWidth: 2
@@ -116,7 +115,8 @@ export const InteractivePlan = () => {
                 .then((json: ApiResponse) => {
                     const dataPayload = json?.payload;
                     if (json.status !== 200) {
-                        return <ErrorPop message={json.message}/>
+                        console.error("Error : ",json.message);
+                        return
                     }
                     const associativePayloadArray: {
                         [key: string]: SensorsData
@@ -125,12 +125,9 @@ export const InteractivePlan = () => {
                         return acc;
                     }, {});
 
-                    // console.log('ASSO ARRAY : ', associativePayloadArray);
-
                     setSensorsData(associativePayloadArray);
 
                     setSensorsData(current => {
-                        // console.log("STATE", current[0])
                         return current;
                     })
 
@@ -144,7 +141,14 @@ export const InteractivePlan = () => {
 
         myChart.on('click', handleChartClick);
 
+        const handleWindowResize = () => {
+            myChart.resize();
+        };
+
+        window.addEventListener("resize", handleWindowResize);
+
         return () => {
+            window.removeEventListener("resize", handleWindowResize);
             myChart.dispose();
         };
     }, []);

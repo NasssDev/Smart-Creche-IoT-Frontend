@@ -31,7 +31,6 @@ const DegreeBar = ({temperature, minTemperature, maxTemperature, labelForSiesteT
                 display: 'flex',
                 flexDirection: 'row',
                 alignItems: 'center',
-                // paddingInline: '10px',
                 justifyContent: "space-evenly",
                 paddingTop: "30px",
                 paddingBottom: "15px"

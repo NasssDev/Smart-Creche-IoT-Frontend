@@ -5,6 +5,7 @@ import { Table} from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
 interface DataType {
+    key: string;
     date: string;
     time: string;
     type: string;
@@ -64,9 +65,10 @@ export const TabEvents = () => {
             .then(response => response.json())
             .then((data: { payload: Event[] }) => {
             const listData: DataType[] = [];
-            data.payload.forEach((ele: Event) => {
+            data.payload.forEach((ele: Event,index) => {
                 const dateObject = moment(ele.createdAt);
                 listData.push({
+                    key: index.toString(),
                     date: dateObject.format("YYYY-MM-DD"),
                     time: dateObject.format("HH:mm:ss.SSS"),
                     type: ele.sensor,
