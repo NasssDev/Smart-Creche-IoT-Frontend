@@ -14,6 +14,7 @@ import {ForgetPasswordChanged} from "./pages/ForgetPasswordChanged.tsx";
 import CopyrightNotice from "./components/CopyrightNotice.tsx";
 import {useState} from "react";
 import ProtectedRoute from "./route/ProtectedRoute.tsx"
+// import {AuthProvider} from "./context/AuthContext.tsx"
 
 function App() {
 
@@ -23,42 +24,45 @@ function App() {
 
 
     return <>
-        <div className="flex flex-col">
-            {isConnected && <SideBar/>}
-            <div
-                className={isConnected ? "flex-1 overflow-hidden px-10 ml-64 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto h-screen max-h-full"}>
-                <Routes>
-                    <Route path="/" element={
-                        <ProtectedRoute>
-                            <Home/>
-                        </ProtectedRoute>
-                    }/>
-                    <Route path="/dashboard" element={
-                        <ProtectedRoute>
-                            <Dashboard/>
-                        </ProtectedRoute>
-                    }/>
-                    <Route path="/events" element={
-                        <ProtectedRoute>
-                            <Events/>
-                        </ProtectedRoute>
-                    }/>
-                    <Route path="/profile" element={
-                        <ProtectedRoute>
-                            <Profile/>
-                        </ProtectedRoute>
-                    }/>
-                    <Route path="/sign-in" element={<SignIn setIsConnected={setIsConnected} isError={isError} setIsError={setIsError}/>}/>
-                    <Route path="/sign-up" element={<SignUp isError={isError} setIsError={setIsError}/>}/>
-                    <Route path="/sign-up2" element={<SignUp2/>}/>
-                    <Route path="/ForgetPassword" element={<ForgetPassword/>}/>
-                    <Route path="/ForgetPasswordOTP" element={<ForgetPasswordOTP/>}/>
-                    <Route path="/ForgetPasswordChange" element={<ForgetPasswordChange/>}/>
-                    <Route path="/ForgetPasswordChanged" element={<ForgetPasswordChanged/>}/>
-                </Routes>
-                {isConnected && <CopyrightNotice/>}
+        {/*<AuthProvider>*/}
+            <div className="flex flex-col">
+                {isConnected && <SideBar/>}
+                <div
+                    className={isConnected ? "flex-1 overflow-hidden px-10 ml-64 h-screen max-h-full" : "flex-1 w-full overflow-hidden mx-auto h-screen max-h-full"}>
+                    <Routes>
+                        <Route path="/" element={
+                            <ProtectedRoute>
+                                <Home/>
+                            </ProtectedRoute>
+                        }/>
+                        <Route path="/dashboard" element={
+                            <ProtectedRoute>
+                                <Dashboard/>
+                            </ProtectedRoute>
+                        }/>
+                        <Route path="/events" element={
+                            <ProtectedRoute>
+                                <Events/>
+                            </ProtectedRoute>
+                        }/>
+                        <Route path="/profile" element={
+                            <ProtectedRoute>
+                                <Profile/>
+                            </ProtectedRoute>
+                        }/>
+                        <Route path="/sign-in" element={<SignIn setIsConnected={setIsConnected} isError={isError}
+                                                                setIsError={setIsError}/>}/>
+                        <Route path="/sign-up" element={<SignUp isError={isError} setIsError={setIsError}/>}/>
+                        <Route path="/sign-up2" element={<SignUp2/>}/>
+                        <Route path="/ForgetPassword" element={<ForgetPassword/>}/>
+                        <Route path="/ForgetPasswordOTP" element={<ForgetPasswordOTP/>}/>
+                        <Route path="/ForgetPasswordChange" element={<ForgetPasswordChange/>}/>
+                        <Route path="/ForgetPasswordChanged" element={<ForgetPasswordChanged/>}/>
+                    </Routes>
+                    {isConnected && <CopyrightNotice/>}
+                </div>
             </div>
-        </div>
+        {/*</AuthProvider>*/}
     </>
 }
 
