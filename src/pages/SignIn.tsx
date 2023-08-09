@@ -59,6 +59,10 @@ export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: Reac
         );
     }
 
+    const closeErrorPop = () => {
+        setIsError(false);
+    };
+
     return (
         <>
             <button
@@ -104,7 +108,7 @@ export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: Reac
                     </div>
                     <div className="mb-4">
                         <button
-                            className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white">Got
+                            className="rounded-md py-2 px-6 text-md inline-table w-full items-center text-center bg-crech-blue text-white transition duration-300 ease-in-out transform hover:bg-blue-600 active:bg-blue-800 focus:outline-none focus:ring focus:ring-blue-300">Got
                             It
                         </button>
                     </div>
@@ -148,7 +152,8 @@ export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: Reac
                 </div>
             </div>
             {isModalForVisitorOpen && <ModalForVisitor onClose={handleCloseModal}/>}
-            {isError && <ErrorPop message="An error occured during sign in!"/>}
+            {isError && <div onClick={closeErrorPop} className="fixed inset-0 flex justify-center items-center z-[1055] bg-black bg-opacity-50">
+                <div className="bg-white rounded-lg shadow-lg"><ErrorPop message="An error occured during sign in!"/></div></div>}
         </>
     )
 }

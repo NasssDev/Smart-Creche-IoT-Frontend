@@ -20,6 +20,7 @@ export const Modal = ({isModalOpen, setIsModalOpen, sensorsData}: {
                     aria-modal="true"
                 >
                     <div
+                        onClick={closeModal}
                         className="flex items-end justify-center min-w-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
                         <span className="hidden sm:inline-block sm:align-middle sm:h-screen"
                               aria-hidden="true">&#8203;</span>
