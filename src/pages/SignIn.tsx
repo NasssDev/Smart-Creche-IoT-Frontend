@@ -120,7 +120,7 @@ export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: Reac
                     </div>
                     <footer className="mb-4 flex justify-center items-center absolute bottom-0">
                         <div className="text-gray-400">
-                            © 2022 Smart’Creche. All Rights Reserved. Made with love HETIC students!
+                            © 2022 Smart’Creche. All Rights Reserved. Made with love by HETIC students!
                         </div>
                     </footer>
                 </form>

@@ -132,7 +132,7 @@ export const SignUp = ({isError,setIsError}:{isError:boolean, setIsError:React.D
                     </form>
                     <footer className="py-2 flex justify-center items-center bottom-0">
                         <div className="text-gray-400">
-                            © 2022 Smart’Creche. All Rights Reserved. Made with love HETIC students!
+                            © 2022 Smart’Creche. All Rights Reserved. Made with love by HETIC students!
                         </div>
                     </footer>
                 </div>
