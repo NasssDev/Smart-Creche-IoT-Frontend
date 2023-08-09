@@ -26,7 +26,7 @@ export const Modal = ({isModalOpen, setIsModalOpen, sensorsData}: {
 
                         <div className="fixed inset-0 flex items-center justify-center z-10 overflow-y-auto">
                             <div className="relative p-10 w-3/4 max-w-3/4 max-h-96 overflow-y-auto bg-white rounded-lg shadow-2xl">
-                                <div className={`grid grid-cols-4 gap-10 justify-center items-center`}>
+                                <div className={`grid grid-cols-3 gap-10 justify-center items-center`}>
                                         {!!sensorsData && Object.keys(sensorsData).map((key,index) => {
                                             const elem = sensorsData[key];
                                             return <SensorCardCol3 key={index} label={elem.sensor_name} toggled={false} chartData={elem}/>
