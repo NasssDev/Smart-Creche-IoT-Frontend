@@ -29,6 +29,6 @@ Pour démarrer avec Smart'Crèche, suivez ces étapes :
 4. **Accéder à l'Application:** Ouvrez votre navigateur web et rendez-vous à l'adresse `http://localhost:5173` pour accéder à l'application Smart'Creche.
 
 
-## Contact
+## Démo
 
-Pour des questions ou du support, veuillez contacter notre équipe à contact@smartcreche.com ou visiter notre site web à [www.smartcreche.com](https://www.smartcreche.com).
+Visitez notre site web à [www.smartcreche.app](https://smart-creche.vercel.app).
