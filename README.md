@@ -24,11 +24,9 @@ Pour démarrer avec Smart'Crèche, suivez ces étapes :
 
 2. **Installer les Dépendances:** `cd smart-creche` puis `npm install`
 
-3. **Configurer l'Environnement:** Créez un fichier `.env` en vous basant sur le modèle `.env.example` et remplissez les configurations nécessaires.
+3. **Lancer l'Application:** Démarrez le serveur de développement avec la commande `npm run dev`.
 
-4. **Lancer l'Application:** Démarrez le serveur de développement avec la commande `npm run dev`.
-
-5. **Accéder à l'Application:** Ouvrez votre navigateur web et rendez-vous à l'adresse `http://localhost:5173` pour accéder à l'application Smart'Creche.
+4. **Accéder à l'Application:** Ouvrez votre navigateur web et rendez-vous à l'adresse `http://localhost:5173` pour accéder à l'application Smart'Creche.
 
 
 ## Contact
