@@ -4,6 +4,8 @@
 
 Bienvenue dans le projet Smart'Crèche ! Notre projet vise à révolutionner la gestion et le fonctionnement des crèches en utilisant des technologies intelligentes et des solutions innovantes. Grâce à ces outils, nous créons un environnement plus efficace et connecté à la fois pour les parents et le personnel.
 
+Accédez au site ici : [www.smartcreche.app](https://smart-creche.vercel.app).
+
 ## Fonctionnalités
 
 - **Surveillance en Temps Réel:** Suivez en temps réel les activités, le bien-être et la sécurité des enfants grâce à des capteurs intelligents et des dispositifs connectés.
