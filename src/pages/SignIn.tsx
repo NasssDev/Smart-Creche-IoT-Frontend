@@ -1,11 +1,26 @@
-import {FormEvent, useState, ChangeEvent} from 'react';
+import {FormEvent, useState, ChangeEvent, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {API_URL} from "../constants/constants.tsx";
 import {ModalForVisitor} from "../components/ModalForVisitor.tsx";
 import {ErrorPop} from "../components/responsePopUp/ErrorPop.tsx";
 
 
-export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: React.Dispatch<React.SetStateAction<boolean>>,isError:boolean, setIsError:React.Dispatch<React.SetStateAction<boolean>>}) => {
+export const SignIn = ({setIsConnected, isError, setIsError}: {
+    setIsConnected: React.Dispatch<React.SetStateAction<boolean>>,
+    isError: boolean,
+    setIsError: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
+
+    useEffect(() => {
+        void fetch(API_URL + '/role')
+            .then(response => response.json())
+            .then((data:{code:number}) => {
+                    if (data?.code === 900) {
+                        console.log(900);
+                    }
+                }
+            )
+    }, []);
 
     const navigateTo = useNavigate();
     const [SignInFormData, setSignInFormData] = useState({email: '', password: '',});
@@ -152,8 +167,11 @@ export const SignIn = ({setIsConnected,isError,setIsError}:{setIsConnected: Reac
                 </div>
             </div>
             {isModalForVisitorOpen && <ModalForVisitor onClose={handleCloseModal}/>}
-            {isError && <div onClick={closeErrorPop} className="fixed inset-0 flex justify-center items-center z-[1055] bg-black bg-opacity-50">
-                <div className="bg-white rounded-lg shadow-lg"><ErrorPop message="An error occured during sign in!"/></div></div>}
+            {isError && <div onClick={closeErrorPop}
+                             className="fixed inset-0 flex justify-center items-center z-[1055] bg-black bg-opacity-50">
+                <div className="bg-white rounded-lg shadow-lg"><ErrorPop message="An error occured during sign in!"/>
+                </div>
+            </div>}
         </>
     )
 }
