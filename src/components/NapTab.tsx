@@ -14,7 +14,7 @@ export const NapTab = ({label}: { label: string }) => {
     const [dataObj, setDataObj] = useState<SensorI>({
         CO2: {sensor_name: "CO2",sensor_id: "131", high: 800, low: 0, values: [{value: 490}], sensor_unit: "PPM"},
         Brightness: {sensor_name: "Brightness",sensor_id: "118", high: 3000, low: 0,values: [{ value: 2173}], sensor_unit: "LUX"},
-        Temperature: {sensor_name: "Temperature",sensor_id: "112", high: 40, low: 0,values: [{ value: 19}], sensor_unit: "C"},
+        Temperature: {sensor_name: "Temperature",sensor_id: "112", high: 40, low: 0,values: [{ value: 18}], sensor_unit: "C"},
         Humidity: {sensor_name: "Humidity",sensor_id: "114", high: 100, low: 0,values: [{ value: 57}], sensor_unit: "%"},
     });
 
@@ -36,7 +36,7 @@ export const NapTab = ({label}: { label: string }) => {
             setDataObj(current => ({
                 ...current,
                 'Brightness' : {...current.Brightness, values :[{value: 2173}]},
-                'Temperature' : {...current.Temperature, values :[{value: 19}]},
+                'Temperature' : {...current.Temperature, values :[{value: 18}]},
                 'Humidity' : {...current.Humidity, values :[{value: 57}]},
             }))
             sessionStorage.setItem("toggleEndDate", moment().format("HH:mm"));

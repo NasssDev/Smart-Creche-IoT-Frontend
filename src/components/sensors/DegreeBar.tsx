@@ -9,7 +9,6 @@ const DegreeBar = ({temperature, minTemperature, maxTemperature, labelForSiesteT
         if (temperature >= 13) return '#52c41a'; // Green
         return '#00ffe9'; // blue
     };
-
     const calculateFillPercentage = (temperature:number, minTemperature:number, maxTemperature:number) => {
         if (temperature <= minTemperature) return 0;
         if (temperature >= maxTemperature) return 100;
@@ -17,7 +16,7 @@ const DegreeBar = ({temperature, minTemperature, maxTemperature, labelForSiesteT
     };
 
     const [currentTemperature, setCurrentTemperature] = useState(temperature);
-
+console.log(currentTemperature);
     const handleTemperatureChange = (value:number) => {
         setCurrentTemperature(value);
     };
@@ -53,7 +52,6 @@ const DegreeBar = ({temperature, minTemperature, maxTemperature, labelForSiesteT
                             value={currentTemperature}
                             onChange={handleTemperatureChange}
                             style={{height: '180px', marginTop: '10px', marginBottom: '20px'}}
-
                         />
                     </div>
                     <div style={{display: 'flex', height: '100%'}}>
