@@ -14,6 +14,7 @@ import {ForgetPasswordChanged} from "./pages/ForgetPasswordChanged.tsx";
 import CopyrightNotice from "./components/CopyrightNotice.tsx";
 import {useState} from "react";
 import ProtectedRoute from "./route/ProtectedRoute.tsx"
+import {ErrorPage} from "./pages/ErrorPage.tsx";
 // import {AuthProvider} from "./context/AuthContext.tsx"
 
 function App() {
@@ -58,6 +59,8 @@ function App() {
                         <Route path="/ForgetPasswordOTP" element={<ForgetPasswordOTP/>}/>
                         <Route path="/ForgetPasswordChange" element={<ForgetPasswordChange/>}/>
                         <Route path="/ForgetPasswordChanged" element={<ForgetPasswordChanged/>}/>
+
+                        <Route path="*" element={<ErrorPage />}/>
                     </Routes>
                     {isConnected && <CopyrightNotice/>}
                 </div>
