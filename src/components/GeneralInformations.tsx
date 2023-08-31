@@ -74,7 +74,7 @@ const GeneralInformations = () => {
                         className="text-gray-700 rounded py-1 px-3"
                         id="grid-positionheld"
                         type="text"
-                        placeholder="Directrice"
+                        placeholder="Director"
                     />
                 </div>
 
